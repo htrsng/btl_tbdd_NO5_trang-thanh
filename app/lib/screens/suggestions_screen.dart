@@ -140,7 +140,6 @@ class SuggestionsScreen extends ConsumerWidget {
 
 // Widget riêng cho thẻ sản phẩm, giờ đây nhận vào một đối tượng ProductSuggestion
 class _ProductSuggestionCard extends StatelessWidget {
-  // [SỬA LỖI] - Thay đổi kiểu dữ liệu từ Map sang ProductSuggestion
   final ProductSuggestion product;
 
   const _ProductSuggestionCard({required this.product});
@@ -160,7 +159,7 @@ class _ProductSuggestionCard extends StatelessWidget {
               width: double.infinity,
               color: Colors.grey.shade100,
               child: Image.network(
-                product.image, // <-- Truy cập trực tiếp, an toàn
+                product.image,
                 fit: BoxFit.contain,
                 errorBuilder: (context, error, stack) => const Icon(
                     Icons.image_not_supported,
@@ -178,18 +177,18 @@ class _ProductSuggestionCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    product.name, // <-- Truy cập trực tiếp
+                    product.name, 
                     style: const TextStyle(
                         fontSize: 16, fontWeight: FontWeight.bold),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
                   Text(
-                    product.brand, // <-- Truy cập trực tiếp
+                    product.brand, 
                     style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
                   ),
                   Text(
-                    product.reason, // <-- Truy cập trực tiếp
+                    product.reason, 
                     style: const TextStyle(fontSize: 13),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
