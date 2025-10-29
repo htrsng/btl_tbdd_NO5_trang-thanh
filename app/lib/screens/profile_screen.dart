@@ -41,11 +41,10 @@ class ProfileScreen extends ConsumerWidget {
               onTap: () {},
             ),
 
-            // [THÊM MỚI] - Mục chọn ngôn ngữ
             _buildProfileMenuItem(
               icon: Icons.language_outlined,
               title:
-                  "Ngôn ngữ / Language", // Hiển thị cả 2 để người dùng dễ nhận biết
+                  "Ngôn ngữ / Language",
               onTap: () {
                 _showLanguageDialog(context, ref);
               },
@@ -73,8 +72,6 @@ class ProfileScreen extends ConsumerWidget {
       ),
     );
   }
-
-  // Hàm hiển thị hộp thoại chọn ngôn ngữ
   void _showLanguageDialog(BuildContext context, WidgetRef ref) {
     showDialog(
       context: context,
@@ -87,7 +84,6 @@ class ProfileScreen extends ConsumerWidget {
               ListTile(
                 title: const Text('Tiếng Việt'),
                 onTap: () {
-                  // Gọi notifier để đặt và lưu ngôn ngữ mới
                   ref
                       .read(localeProvider.notifier)
                       .setLocale(const Locale('vi'));
