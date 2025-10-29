@@ -1,0 +1,349 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:intl/intl.dart' as intl;
+
+import 'app_localizations_en.dart';
+import 'app_localizations_vi.dart';
+
+// ignore_for_file: type=lint
+
+/// Callers can lookup localized strings with an instance of AppLocalizations
+/// returned by `AppLocalizations.of(context)`.
+///
+/// Applications need to include `AppLocalizations.delegate()` in their app's
+/// `localizationDelegates` list, and the locales they support in the app's
+/// `supportedLocales` list. For example:
+///
+/// ```dart
+/// import 'l10n/app_localizations.dart';
+///
+/// return MaterialApp(
+///   localizationsDelegates: AppLocalizations.localizationsDelegates,
+///   supportedLocales: AppLocalizations.supportedLocales,
+///   home: MyApplicationHome(),
+/// );
+/// ```
+///
+/// ## Update pubspec.yaml
+///
+/// Please make sure to update your pubspec.yaml to include the following
+/// packages:
+///
+/// ```yaml
+/// dependencies:
+///   # Internationalization support.
+///   flutter_localizations:
+///     sdk: flutter
+///   intl: any # Use the pinned version from flutter_localizations
+///
+///   # Rest of dependencies
+/// ```
+///
+/// ## iOS Applications
+///
+/// iOS applications define key application metadata, including supported
+/// locales, in an Info.plist file that is built into the application bundle.
+/// To configure the locales supported by your app, you’ll need to edit this
+/// file.
+///
+/// First, open your project’s ios/Runner.xcworkspace Xcode workspace file.
+/// Then, in the Project Navigator, open the Info.plist file under the Runner
+/// project’s Runner folder.
+///
+/// Next, select the Information Property List item, select Add Item from the
+/// Editor menu, then select Localizations from the pop-up menu.
+///
+/// Select and expand the newly-created Localizations item then, for each
+/// locale your application supports, add a new item and select the locale
+/// you wish to add from the pop-up menu in the Value field. This list should
+/// be consistent with the languages listed in the AppLocalizations.supportedLocales
+/// property.
+abstract class AppLocalizations {
+  AppLocalizations(String locale)
+      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+
+  final String localeName;
+
+  static AppLocalizations? of(BuildContext context) {
+    return Localizations.of<AppLocalizations>(context, AppLocalizations);
+  }
+
+  static const LocalizationsDelegate<AppLocalizations> delegate =
+      _AppLocalizationsDelegate();
+
+  /// A list of this localizations delegate along with the default localizations
+  /// delegates.
+  ///
+  /// Returns a list of localizations delegates containing this delegate along with
+  /// GlobalMaterialLocalizations.delegate, GlobalCupertinoLocalizations.delegate,
+  /// and GlobalWidgetsLocalizations.delegate.
+  ///
+  /// Additional delegates can be added by appending to this list in
+  /// MaterialApp. This list does not have to be used at all if a custom list
+  /// of delegates is preferred or required.
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
+      <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
+
+  /// A list of this localizations delegate's supported locales.
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('en'),
+    Locale('vi')
+  ];
+
+  /// No description provided for @homeTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Home'**
+  String get homeTab;
+
+  /// No description provided for @suggestionsTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggestions'**
+  String get suggestionsTab;
+
+  /// No description provided for @historyTab.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get historyTab;
+
+  /// No description provided for @profileTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileTab;
+
+  /// No description provided for @continueButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueButton;
+
+  /// No description provided for @introSlide1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to SkinAI!'**
+  String get introSlide1Title;
+
+  /// No description provided for @introSlide1Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your personal skin analysis assistant powered by AI.'**
+  String get introSlide1Subtitle;
+
+  /// No description provided for @introSlide2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload 3 Photos Easily'**
+  String get introSlide2Title;
+
+  /// No description provided for @introSlide2Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Take a front, left, and right photo for the most accurate results.'**
+  String get introSlide2Subtitle;
+
+  /// No description provided for @introSlide3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Get In-depth Suggestions'**
+  String get introSlide3Title;
+
+  /// No description provided for @introSlide3Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Discover your skin condition and receive personalized recommendations.'**
+  String get introSlide3Subtitle;
+
+  /// No description provided for @introStartButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Exploring'**
+  String get introStartButton;
+
+  /// No description provided for @photosUploaded.
+  ///
+  /// In en, this message translates to:
+  /// **'Uploaded'**
+  String get photosUploaded;
+
+  /// No description provided for @uploadPhoto.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Photo'**
+  String get uploadPhoto;
+
+  /// No description provided for @leftAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Left'**
+  String get leftAngle;
+
+  /// No description provided for @centerAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Center'**
+  String get centerAngle;
+
+  /// No description provided for @rightAngle.
+  ///
+  /// In en, this message translates to:
+  /// **'Right'**
+  String get rightAngle;
+
+  /// No description provided for @suggestionsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Personalized Suggestions'**
+  String get suggestionsTitle;
+
+  /// No description provided for @habitsTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Habits'**
+  String get habitsTab;
+
+  /// No description provided for @productsTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Products'**
+  String get productsTab;
+
+  /// No description provided for @lifestyleTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Lifestyle'**
+  String get lifestyleTab;
+
+  /// No description provided for @performAnalysisFirst.
+  ///
+  /// In en, this message translates to:
+  /// **'Please perform an analysis on the Home screen first.'**
+  String get performAnalysisFirst;
+
+  /// No description provided for @noHabitSuggestions.
+  ///
+  /// In en, this message translates to:
+  /// **'No habit suggestions available.'**
+  String get noHabitSuggestions;
+
+  /// No description provided for @noProductSuggestions.
+  ///
+  /// In en, this message translates to:
+  /// **'No products suggested.'**
+  String get noProductSuggestions;
+
+  /// No description provided for @findProductsButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Find Products on Shopee'**
+  String get findProductsButton;
+
+  /// No description provided for @featureInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Feature in development!'**
+  String get featureInProgress;
+
+  /// No description provided for @historyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Analysis History'**
+  String get historyTitle;
+
+  /// No description provided for @skinProgressionChartTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Skin Progression'**
+  String get skinProgressionChartTitle;
+
+  /// No description provided for @analysisDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Analysis Date'**
+  String get analysisDate;
+
+  /// No description provided for @skinScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Skin Score'**
+  String get skinScore;
+
+  /// No description provided for @noHistoryMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'No history yet. Let\'s start your first analysis!'**
+  String get noHistoryMessage;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profileTitle;
+
+  /// No description provided for @editProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get editProfile;
+
+  /// No description provided for @notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
+  /// No description provided for @aboutUs.
+  ///
+  /// In en, this message translates to:
+  /// **'About Us'**
+  String get aboutUs;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+}
+
+class _AppLocalizationsDelegate
+    extends LocalizationsDelegate<AppLocalizations> {
+  const _AppLocalizationsDelegate();
+
+  @override
+  Future<AppLocalizations> load(Locale locale) {
+    return SynchronousFuture<AppLocalizations>(lookupAppLocalizations(locale));
+  }
+
+  @override
+  bool isSupported(Locale locale) =>
+      <String>['en', 'vi'].contains(locale.languageCode);
+
+  @override
+  bool shouldReload(_AppLocalizationsDelegate old) => false;
+}
+
+AppLocalizations lookupAppLocalizations(Locale locale) {
+  // Lookup logic when only language code is specified.
+  switch (locale.languageCode) {
+    case 'en':
+      return AppLocalizationsEn();
+    case 'vi':
+      return AppLocalizationsVi();
+  }
+
+  throw FlutterError(
+      'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
+      'an issue with the localizations generation tool. Please file an issue '
+      'on GitHub with a reproducible sample app and the gen-l10n configuration '
+      'that was used.');
+}

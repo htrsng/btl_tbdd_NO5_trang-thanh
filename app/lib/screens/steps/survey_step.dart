@@ -1,4 +1,3 @@
-// lib/screens/steps/survey_step.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/analysis_flow_provider.dart';
@@ -12,91 +11,129 @@ class SurveyStep extends ConsumerStatefulWidget {
 }
 
 class _SurveyStepState extends ConsumerState<SurveyStep> {
-  int _currentSurveyStep = 0;
+  // State để theo dõi câu hỏi hiện tại
+  int _currentQuestionIndex = 0;
 
-  void _nextStep() {
+  void _nextQuestion() {
     final questions = ref.read(surveyQuestionsProvider);
     final answers = ref.read(analysisFlowProvider).surveyAnswers;
 
-    if (answers[questions[_currentSurveyStep]['id']]!.isEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('Chọn câu trả lời!')));
+    // Kiểm tra xem câu hỏi hiện tại đã được trả lời chưa
+    if (answers[questions[_currentQuestionIndex]['id']]!.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Vui lòng chọn một câu trả lời!')),
+      );
       return;
     }
-    if (_currentSurveyStep < questions.length - 1) {
-      setState(() => _currentSurveyStep++);
+
+    // Nếu chưa phải câu hỏi cuối cùng, chuyển sang câu tiếp theo
+    if (_currentQuestionIndex < questions.length - 1) {
+      setState(() {
+        _currentQuestionIndex++;
+      });
     } else {
-      // Gọi provider để phân tích
-      // Provider sẽ xử lý việc set loading và chuyển bước
+      // Nếu là câu hỏi cuối cùng, gọi hàm phân tích
       ref.read(analysisFlowProvider.notifier).analyze();
+    }
+  }
+
+  void _previousQuestion() {
+    if (_currentQuestionIndex > 0) {
+      setState(() {
+        _currentQuestionIndex--;
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // Đọc danh sách câu hỏi từ provider
+    // Đọc danh sách câu hỏi và câu trả lời từ provider
     final questions = ref.watch(surveyQuestionsProvider);
-    // Đọc danh sách câu trả lời để hiển thị
     final surveyAnswers = ref.watch(analysisFlowProvider).surveyAnswers;
 
-    final q = questions[_currentSurveyStep];
+    // Lấy câu hỏi hiện tại để hiển thị
+    final currentQuestion = questions[_currentQuestionIndex];
+    final questionId = currentQuestion['id'] as String;
 
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // --- Phần tiêu đề và tiến trình ---
             Text(
-              'Khảo sát nhanh (Câu ${_currentSurveyStep + 1}/${questions.length})',
-              style: const TextStyle(fontSize: 16),
+              'Khảo sát nhanh (Câu ${_currentQuestionIndex + 1}/${questions.length})',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).primaryColor,
+              ),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 8),
+            // Thanh tiến trình
+            LinearProgressIndicator(
+              value: (_currentQuestionIndex + 1) / questions.length,
+              backgroundColor: Colors.grey.shade200,
+              minHeight: 6,
+            ),
+            const SizedBox(height: 24),
+
+            // --- Phần câu hỏi và lựa chọn ---
             Text(
-              q['text'],
-              style: const TextStyle(fontWeight: FontWeight.bold),
+              currentQuestion['text'] as String,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 16),
-            // THAY THẾ BẰNG CODE MỚI NÀY:
+            const SizedBox(height: 24),
+
+            // [SỬA LỖI] - Dùng Column và RadioListTile thay cho code cũ
             Column(
-              children: (q['options'] as List).map((opt) {
-                final String currentAnswer = surveyAnswers[q['id']] ?? "";
-                return ListTile(
-                  title: Text(opt),
-                  // Dùng Radio() bên trong ListTile
-                  leading: Radio<String>(
-                    value: opt,
-                    groupValue: currentAnswer,
-                    onChanged: (val) {
-                      ref
-                          .read(analysisFlowProvider.notifier)
-                          .setSurveyAnswer(q['id'], val ?? '');
+              children: (currentQuestion['options'] as List<String>).map((
+                option,
+              ) {
+                return Card(
+                  margin: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: RadioListTile<String>(
+                    title: Text(option),
+                    value: option,
+                    groupValue: surveyAnswers[questionId] ?? "",
+                    onChanged: (value) {
+                      // Khi chọn, gọi notifier để cập nhật state
+                      if (value != null) {
+                        ref
+                            .read(analysisFlowProvider.notifier)
+                            .setSurveyAnswer(questionId, value);
+                      }
                     },
+                    activeColor: Theme.of(context).primaryColor,
                   ),
-                  // Thêm onTap để người dùng có thể bấm vào bất cứ đâu
-                  onTap: () {
-                    ref
-                        .read(analysisFlowProvider.notifier)
-                        .setSurveyAnswer(q['id'], opt);
-                  },
                 );
               }).toList(),
             ),
+            const SizedBox(height: 32),
+
+            // --- Phần nút điều hướng ---
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                if (_currentSurveyStep > 0)
+                // Nút "Trước" chỉ hiện khi không phải câu đầu tiên
+                if (_currentQuestionIndex > 0)
                   TextButton(
-                    onPressed: () => setState(() => _currentSurveyStep--),
-                    child: const Text('Trước'),
+                    onPressed: _previousQuestion,
+                    child: const Text('<< Quay lại'),
                   ),
-                const Spacer(), // Đẩy nút "Tiếp" sang phải
+                // Dùng Spacer để đẩy nút "Tiếp" sang phải nếu nút "Trước" bị ẩn
+                if (_currentQuestionIndex == 0) const Spacer(),
+
                 ElevatedButton(
-                  onPressed: _nextStep,
+                  onPressed: _nextQuestion,
                   child: Text(
-                    _currentSurveyStep == questions.length - 1
-                        ? 'Gửi & Phân tích'
-                        : 'Tiếp',
+                    // Thay đổi text của nút ở câu hỏi cuối cùng
+                    _currentQuestionIndex == questions.length - 1
+                        ? 'Hoàn thành & Phân tích'
+                        : 'Tiếp theo',
                   ),
                 ),
               ],
