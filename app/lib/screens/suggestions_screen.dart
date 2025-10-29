@@ -89,7 +89,6 @@ class SuggestionsScreen extends ConsumerWidget {
 
   Widget _buildProductsTab(
       BuildContext context, SkinAnalysis analysis, AppLocalizations l10n) {
-    // [SỬA LỖI] - Truy cập trực tiếp vào analysis.products. Nó đã là List<ProductSuggestion>.
     final List<ProductSuggestion> products = analysis.products;
 
     if (products.isEmpty) {
