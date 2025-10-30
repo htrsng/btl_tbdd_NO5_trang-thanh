@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import '../models/skin_analysis_model.dart';
 import 'app_state_provider.dart';
 
-// [CẢI TIẾN #3] - Loại bỏ 'imageBytes' khỏi State để tiết kiệm bộ nhớ
+// Loại bỏ 'imageBytes' khỏi State để tiết kiệm bộ nhớ
 class AnalysisFlowState {
   final List<XFile?> images;
   final Map<String, String> surveyAnswers;
@@ -73,7 +73,7 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
     state = const AnalysisFlowState();
   }
 
-  // [CẢI TIẾN #1] - Hàm analyze giờ đây rất gọn gàng, chỉ làm nhiệm vụ điều phối
+  //- Hàm analyze giờ đây rất gọn gàng, chỉ làm nhiệm vụ điều phối
   Future<void> analyze() async {
     if (state.images.any((img) => img == null)) {
       state = state.copyWith(error: "Vui lòng tải đủ 3 ảnh.");
@@ -100,11 +100,11 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
     }
   }
 
-  // [CẢI TIẾN #1] - Tách toàn bộ logic tạo dữ liệu giả ra hàm riêng
+  // Tách toàn bộ logic tạo dữ liệu giả ra hàm riêng
   SkinAnalysis _generateFakeAnalysis() {
     final random = math.Random();
 
-    // [CẢI TIẾN #2] - Tạo các điểm số chi tiết trước
+    // Tạo các điểm số chi tiết trước
     final detailedScores = {
       'acne': random.nextInt(10) + 1,
       'pores': random.nextInt(10) + 1,

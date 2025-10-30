@@ -24,7 +24,6 @@ class AppStateNotifier extends StateNotifier<AppState> {
     state = state.copyWith(currentStep: step);
   }
 
-  // [SỬA LỖI TẠI ĐÂY]
   // Hàm này giờ đây sẽ không chỉ lưu dữ liệu mà còn tự động chuyển sang bước 3.
   void setAnalysis(SkinAnalysis analysis) {
     state = state.copyWith(
