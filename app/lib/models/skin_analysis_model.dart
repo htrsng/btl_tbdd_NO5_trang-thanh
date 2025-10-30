@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'skin_analysis_model.g.dart';
 
-// --- CÁC MODEL CON (Không thay đổi) ---
 @JsonSerializable()
 class SkinIssueDetail {
   // ... (giữ nguyên code)
