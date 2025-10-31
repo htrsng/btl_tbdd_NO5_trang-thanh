@@ -2,42 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/skin_analysis_model.dart';
 import '../providers/app_state_provider.dart';
-import '../providers/navigation_provider.dart'; // Import provider điều hướng
 import '../l10n/app_localizations.dart';
 
-// [CẢI TIẾN #1] - Chuyển sang ConsumerStatefulWidget để quản lý TabController
-class SuggestionsScreen extends ConsumerStatefulWidget {
+class SuggestionsScreen extends ConsumerWidget {
   const SuggestionsScreen({super.key});
 
   @override
-  ConsumerState<SuggestionsScreen> createState() => _SuggestionsScreenState();
-}
-
-class _SuggestionsScreenState extends ConsumerState<SuggestionsScreen> with SingleTickerProviderStateMixin {
-  late TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-    _tabController = TabController(length: 3, vsync: this);
-
-    // Lắng nghe sự thay đổi từ provider để chuyển tab bằng code
-    // Điều này giúp nút "Nhiều hơn >>" từ ResultsStep hoạt động
-    ref.listenManual(suggestionsTabIndexProvider, (previous, next) {
-      if (_tabController.index != next) {
-        _tabController.animateTo(next);
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _tabController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final analysis = ref.watch(appStateProvider).analysis;
     final l10n = AppLocalizations.of(context)!;
 
@@ -48,25 +19,26 @@ class _SuggestionsScreenState extends ConsumerState<SuggestionsScreen> with Sing
       );
     }
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.suggestionsTitle),
-        bottom: TabBar(
-          controller: _tabController, // Sử dụng controller của chúng ta
-          tabs: [
-            Tab(icon: const Icon(Icons.spa_outlined), text: l10n.habitsTab),
-            Tab(icon: const Icon(Icons.shopping_bag_outlined), text: l10n.productsTab),
-            Tab(icon: const Icon(Icons.self_improvement), text: l10n.lifestyleTab),
+    return DefaultTabController(
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(l10n.suggestionsTitle),
+          bottom: TabBar(
+            tabs: [
+              Tab(icon: const Icon(Icons.spa_outlined), text: l10n.habitsTab),
+              Tab(icon: const Icon(Icons.shopping_bag_outlined), text: l10n.productsTab),
+              Tab(icon: const Icon(Icons.self_improvement), text: l10n.lifestyleTab),
+            ],
+          ),
+        ),
+        body: TabBarView(
+          children: [
+            _buildHabitsTab(context, analysis, l10n),
+            _buildProductsTab(context, analysis, l10n),
+            _buildLifestyleTab(context, analysis, l10n),
           ],
         ),
-      ),
-      body: TabBarView(
-        controller: _tabController,
-        children: [
-          _buildHabitsTab(context, analysis, l10n),
-          _buildProductsTab(context, analysis, l10n),
-          _buildLifestyleTab(context, analysis, l10n),
-        ],
       ),
     );
   }
@@ -74,8 +46,11 @@ class _SuggestionsScreenState extends ConsumerState<SuggestionsScreen> with Sing
   // --- WIDGET CON CHO TỪNG TAB ---
 
   Widget _buildHabitsTab(BuildContext context, SkinAnalysis analysis, AppLocalizations l10n) {
+    // ... code giữ nguyên
     final improvements = analysis.improvements;
-    if (improvements.isEmpty) return Center(child: Text(l10n.noHabitSuggestions));
+    if (improvements.isEmpty) {
+      return Center(child: Text(l10n.noHabitSuggestions));
+    }
 
     return ListView(
       padding: const EdgeInsets.all(16.0),
@@ -103,8 +78,11 @@ class _SuggestionsScreenState extends ConsumerState<SuggestionsScreen> with Sing
   }
 
   Widget _buildProductsTab(BuildContext context, SkinAnalysis analysis, AppLocalizations l10n) {
+    // ... code giữ nguyên
     final List<ProductSuggestion> products = analysis.products;
-    if (products.isEmpty) return Center(child: Text(l10n.noProductSuggestions));
+    if (products.isEmpty) {
+      return Center(child: Text(l10n.noProductSuggestions));
+    }
     
     return Column(
       children: [
@@ -132,62 +110,72 @@ class _SuggestionsScreenState extends ConsumerState<SuggestionsScreen> with Sing
     );
   }
 
-  // [CẢI TIẾN #2] - Nâng cấp tab Lối sống
   Widget _buildLifestyleTab(BuildContext context, SkinAnalysis analysis, AppLocalizations l10n) {
-    final tips = [
-      {'title': l10n.lifestyleTip1Title, 'subtitle': l10n.lifestyleTip1Subtitle, 'image': 'https://images.unsplash.com/photo-1548883354-94bcfe321c25?w=500&q=80'},
-      {'title': l10n.lifestyleTip2Title, 'subtitle': l10n.lifestyleTip2Subtitle, 'image': 'https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&q=80'},
-      {'title': l10n.lifestyleTip3Title, 'subtitle': l10n.lifestyleTip3Subtitle, 'image': 'https://images.unsplash.com/photo-1596701062351-8c2c141e1b9c?w=500&q=80'},
-    ];
-
-    return ListView.builder(
-      padding: const EdgeInsets.all(16.0),
-      itemCount: tips.length,
-      itemBuilder: (context, index) {
-        return _LifestyleTipCard(
-          title: tips[index]['title']!,
-          subtitle: tips[index]['subtitle']!,
-          imageUrl: tips[index]['image']!,
-        );
-      },
+    // ... code giữ nguyên
+    return const Center(
+      child: Padding(
+        padding: EdgeInsets.all(24.0),
+        child: Text('Gợi ý về lối sống, chế độ ăn uống, và các bài viết hữu ích sẽ được hiển thị ở đây.', textAlign: TextAlign.center),
+      ),
     );
   }
 }
 
-// Widget con cho thẻ sản phẩm (giữ nguyên)
-class _ProductSuggestionCard extends StatelessWidget { /* ... */ }
+// [SỬA LỖI TẠI ĐÂY] - Cung cấp lại đầy đủ định nghĩa cho class _ProductSuggestionCard
+class _ProductSuggestionCard extends StatelessWidget {
+  final ProductSuggestion product;
 
-// [THÊM MỚI] - Widget con cho thẻ mẹo lối sống
-class _LifestyleTipCard extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final String imageUrl;
+  // Constructor đúng để nhận tham số 'product'
+  const _ProductSuggestionCard({required this.product});
 
-  const _LifestyleTipCard({required this.title, required this.subtitle, required this.imageUrl});
-
+  // Hàm 'build' đã bị thiếu
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 3,
-      margin: const EdgeInsets.only(bottom: 16.0),
+      elevation: 4.0,
       clipBehavior: Clip.antiAlias,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 150,
-            width: double.infinity,
-            child: Image.network(imageUrl, fit: BoxFit.cover),
+          Expanded(
+            flex: 3,
+            child: Container(
+              width: double.infinity,
+              color: Colors.grey.shade100,
+              child: Image.network(
+                product.image,
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stack) => const Icon(Icons.image_not_supported, size: 50, color: Colors.grey),
+              ),
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-                const SizedBox(height: 8),
-                Text(subtitle, style: TextStyle(color: Colors.grey.shade700, height: 1.4)),
-              ],
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    product.name,
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    product.brand,
+                    style: TextStyle(color: Colors.grey.shade600, fontSize: 14),
+                  ),
+                  Text(
+                    product.reason,
+                    style: const TextStyle(fontSize: 13),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
