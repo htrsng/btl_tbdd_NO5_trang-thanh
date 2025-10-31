@@ -397,6 +397,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Analysis Details'**
   String get historyDetailTitle;
+
+  /// No description provided for @lifestyleTip1Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay Hydrated'**
+  String get lifestyleTip1Title;
+
+  /// No description provided for @lifestyleTip1Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Hydration is key to healthy and glowing skin.'**
+  String get lifestyleTip1Subtitle;
+
+  /// No description provided for @lifestyleTip2Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Balanced Diet'**
+  String get lifestyleTip2Title;
+
+  /// No description provided for @lifestyleTip2Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorporate greens and fruits to provide vitamins for your skin.'**
+  String get lifestyleTip2Subtitle;
+
+  /// No description provided for @lifestyleTip3Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Enough Sleep'**
+  String get lifestyleTip3Title;
+
+  /// No description provided for @lifestyleTip3Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sleep gives your skin time to recover and regenerate cells.'**
+  String get lifestyleTip3Subtitle;
 }
 
 class _AppLocalizationsDelegate

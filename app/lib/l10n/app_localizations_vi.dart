@@ -174,4 +174,25 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get historyDetailTitle => 'Chi tiết Phân tích';
+
+  @override
+  String get lifestyleTip1Title => 'Uống Đủ Nước';
+
+  @override
+  String get lifestyleTip1Subtitle =>
+      'Hydrat hóa là chìa khóa cho làn da khỏe mạnh và căng bóng.';
+
+  @override
+  String get lifestyleTip2Title => 'Chế độ Ăn Cân bằng';
+
+  @override
+  String get lifestyleTip2Subtitle =>
+      'Bổ sung rau xanh và trái cây để cung cấp vitamin cho da.';
+
+  @override
+  String get lifestyleTip3Title => 'Ngủ Đủ Giấc';
+
+  @override
+  String get lifestyleTip3Subtitle =>
+      'Giấc ngủ giúp da có thời gian phục hồi và tái tạo tế bào.';
 }

@@ -174,4 +174,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get historyDetailTitle => 'Analysis Details';
+
+  @override
+  String get lifestyleTip1Title => 'Stay Hydrated';
+
+  @override
+  String get lifestyleTip1Subtitle =>
+      'Hydration is key to healthy and glowing skin.';
+
+  @override
+  String get lifestyleTip2Title => 'Balanced Diet';
+
+  @override
+  String get lifestyleTip2Subtitle =>
+      'Incorporate greens and fruits to provide vitamins for your skin.';
+
+  @override
+  String get lifestyleTip3Title => 'Get Enough Sleep';
+
+  @override
+  String get lifestyleTip3Subtitle =>
+      'Sleep gives your skin time to recover and regenerate cells.';
 }
