@@ -143,88 +143,69 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
   // [NÂNG CẤP "TRÍ TUỆ"] - Hàm này giờ đây sử dụng hệ thống tính điểm
   String _determineSkinTypeFromSurvey(Map<String, String> answers) {
     // 1. Khởi tạo điểm số cho các đặc tính
-    Map<String, int> scores = {
-      'dầu': 0,
-      'khô': 0,
-      'nhạy cảm': 0,
-      'mụn': 0,
-      'lão hóa': 0,
-    };
+    Map<String, int> scores = {'dầu': 0, 'khô': 0, 'nhạy cảm': 0};
 
-    // 2. Tính điểm dựa trên TẤT CẢ các câu trả lời
-    // Câu 1: Loại da
-    switch (answers['q1']) {
-      case 'Da dầu':
-        scores['dầu'] = (scores['dầu'] ?? 0) + 5;
-        break;
-      case 'Da khô':
-        scores['khô'] = (scores['khô'] ?? 0) + 5;
-        break;
-      case 'Da hỗn hợp':
+    // 2. Phân tích từng câu trả lời và cộng điểm
+    answers.forEach((key, answer) {
+      // Logic cho da dầu
+      if (answer.contains('dầu') ||
+          answer.contains('nhờn') ||
+          answer.contains('To rõ')) {
         scores['dầu'] = (scores['dầu'] ?? 0) + 3;
-        scores['khô'] = (scores['khô'] ?? 0) + 2;
-        break;
-      case 'Da nhạy cảm':
-        scores['nhạy cảm'] = (scores['nhạy cảm'] ?? 0) + 5;
-        break;
-    }
+      }
+      // Logic cho da khô
+      if (answer.contains('khô') ||
+          answer.contains('căng') ||
+          answer.contains('bong tróc')) {
+        scores['khô'] = (scores['khô'] ?? 0) + 3;
+      }
+      // Logic cho da nhạy cảm
+      if (answer.contains('ngứa') ||
+          answer.contains('rát') ||
+          answer.contains('đỏ') ||
+          answer.contains('kích ứng') ||
+          answer.contains('châm chích')) {
+        scores['nhạy cảm'] = (scores['nhạy cảm'] ?? 0) + 4;
+      }
 
-    // Câu 2: Mối quan tâm
-    switch (answers['q2']) {
-      case 'Mụn':
-        scores['mụn'] = (scores['mụn'] ?? 0) + 5;
-        break;
-      case 'Lão hóa':
-        scores['lão hóa'] = (scores['lão hóa'] ?? 0) + 5;
-        break;
-      case 'Sắc tố':
-        scores['lão hóa'] = (scores['lão hóa'] ?? 0) + 2;
-        break; // Sắc tố liên quan đến lão hóa do nắng
-      case 'Lỗ chân lông':
-        scores['dầu'] = (scores['dầu'] ?? 0) + 2;
-        break; // Lỗ chân lông to thường đi với da dầu
-    }
-
-    // Câu 3: Tiếp xúc nắng
-    if (answers['q3'] == 'Hàng ngày') {
-      scores['lão hóa'] = (scores['lão hóa'] ?? 0) + 3;
-    }
-
-    // Câu 5: Giấc ngủ
-    if (answers['q5'] == 'Dưới 5 tiếng') {
-      scores['lão hóa'] = (scores['lão hóa'] ?? 0) + 2;
-      scores['nhạy cảm'] = (scores['nhạy cảm'] ?? 0) + 1;
-    }
+      // Logic đặc biệt cho các câu trả lời hỗn hợp
+      if (key == 'q1' || key == 'q2' || key == 'q4') {
+        if (answer.contains('vùng chữ T') && answer.contains('má')) {
+          scores['dầu'] =
+              (scores['dầu'] ?? 0) + 2; // Tăng nhẹ điểm dầu cho da hỗn hợp
+          scores['khô'] =
+              (scores['khô'] ?? 0) + 1; // Tăng nhẹ điểm khô cho da hỗn hợp
+        }
+      }
+    });
 
     // 3. Tổng hợp kết quả thành một chuỗi mô tả
     List<String> descriptions = [];
+    String primaryType;
 
-    // Xác định loại da chính (dầu/khô/hỗn hợp)
+    // Xác định loại da chính dựa trên điểm số cao nhất
     if ((scores['dầu'] ?? 0) > (scores['khô'] ?? 0) + 2) {
-      descriptions.add('Da Dầu');
+      primaryType = 'Da Dầu';
     } else if ((scores['khô'] ?? 0) > (scores['dầu'] ?? 0) + 2) {
-      descriptions.add('Da Khô');
+      primaryType = 'Da Khô';
     } else if ((scores['dầu'] ?? 0) > 0 || (scores['khô'] ?? 0) > 0) {
-      descriptions.add('Da Hỗn Hợp');
+      primaryType = 'Da Hỗn Hợp';
     } else {
-      descriptions.add('Da Thường');
+      // Nếu không có dấu hiệu dầu hay khô rõ rệt, kiểm tra độ nhạy cảm
+      if ((scores['nhạy cảm'] ?? 0) >= 5) {
+        primaryType = 'Da Nhạy Cảm';
+      } else {
+        primaryType = 'Da Thường';
+      }
+    }
+    descriptions.add(primaryType);
+
+    // Thêm các đặc tính phụ nếu điểm số đủ cao và chưa được mô tả
+    if ((scores['nhạy cảm'] ?? 0) >= 5 && primaryType != 'Da Nhạy Cảm') {
+      descriptions.add('thiên nhạy cảm');
     }
 
-    // Thêm các đặc tính phụ nếu điểm số đủ cao
-    if ((scores['nhạy cảm'] ?? 0) >= 5) {
-      descriptions.add('nhạy cảm');
-    }
-    if ((scores['mụn'] ?? 0) >= 5) {
-      descriptions.add('có xu hướng bị mụn');
-    }
-    if ((scores['lão hóa'] ?? 0) >= 5) {
-      descriptions.add('có dấu hiệu lão hóa');
-    }
-
-    // Nếu không có đặc tính phụ, chỉ trả về loại da chính
-    if (descriptions.length == 1) return descriptions.first;
-
-    // Nối các mô tả lại với nhau, ví dụ: "Da Dầu, nhạy cảm, có xu hướng bị mụn"
+    // Nối các mô tả lại với nhau, ví dụ: "Da Dầu, thiên nhạy cảm"
     return descriptions.join(', ');
   }
 }
