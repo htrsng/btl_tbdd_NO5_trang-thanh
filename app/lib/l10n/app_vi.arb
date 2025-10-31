@@ -49,5 +49,6 @@
     "deleteSingleHistoryConfirmation": "Bạn có chắc chắn muốn xóa mục này không?",
     "deleteButton": "Xóa",
     "cancelButton": "Hủy",
-    "historyDetailTitle": "Chi tiết Phân tích"
+    "historyDetailTitle": "Chi tiết Phân tích",
+    
 }
