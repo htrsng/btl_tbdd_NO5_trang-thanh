@@ -1,39 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/skin_analysis_model.dart';
+import '../../providers/navigation_provider.dart';
 
-class AnalysisPanelContent extends StatelessWidget {
+class AnalysisPanelContent extends ConsumerWidget {
   final SkinAnalysis analysis;
 
-  // [SỬA LỖI #1] - Đảm bảo constructor sử dụng tham số có tên
   const AnalysisPanelContent({required this.analysis, super.key});
 
-  // Hàm helper để lấy điểm số dạng số (int) một cách an toàn
-  int _getScoreValue(String key) {
-    // Sử dụng .toJson() để truy cập map gốc nếu cần,
-    // nhưng tốt hơn là truy cập trực tiếp nếu model cho phép.
-    // Dưới đây là cách truy cập trực tiếp, an toàn hơn.
-    switch (key) {
-      case 'acne':
-        return analysis.analysis.acne;
-      case 'pores':
-        return analysis.analysis.pores;
-      case 'pigmentation':
-        return analysis.analysis.pigmentation;
-      case 'wrinkles':
-        return analysis.analysis.wrinkles;
-      case 'texture':
-        return analysis.analysis.texture;
-      case 'redness':
-        return analysis.analysis.redness;
-      default:
-        return 0;
-    }
-  }
-
   @override
-  Widget build(BuildContext context) {
-    // [CẢI TIẾN #4] - Truy cập dữ liệu trực tiếp từ model đã type-safe
-    final overallIssues = analysis.analysis.overallIssues;
+  Widget build(BuildContext context, WidgetRef ref) {
     final scoreText = analysis.skinScore.toStringAsFixed(1);
     final skinType =
         analysis.skinType.isNotEmpty ? analysis.skinType : 'Chưa xác định';
@@ -47,21 +23,30 @@ class AnalysisPanelContent extends StatelessWidget {
             width: 40,
             height: 5,
             decoration: BoxDecoration(
-              color: Colors.grey.shade300,
-              borderRadius: BorderRadius.circular(10.0),
-            ),
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(10.0)),
           ),
         ),
 
         Padding(
           padding: const EdgeInsets.fromLTRB(16.0, 0, 16.0, 16.0),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              buildTopInfoCard(context, scoreText, skinType, overallIssues),
+              _buildTopInfoCard(context, scoreText, skinType),
+              const SizedBox(height: 24),
+              _buildImprovementTeaser(context),
+              const SizedBox(height: 24),
+              _buildProductTeaser(context, ref),
+              const SizedBox(height: 24),
+              const Divider(height: 24),
+              const Text(
+                "Phân tích chi tiết",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
               const SizedBox(height: 18),
-              buildGridInfoCards(context),
-              // Các phần còn lại như buildIssuesList, buildWarningBox có thể được thêm vào đây
+              _buildGridInfoCards(context),
             ],
           ),
         ),
@@ -69,79 +54,164 @@ class AnalysisPanelContent extends StatelessWidget {
     );
   }
 
-  // --- CÁC WIDGET CON ĐÃ ĐƯỢC CẬP NHẬT ---
+  // --- WIDGET CON ĐÃ ĐƯỢC CẬP NHẬT ---
 
-  Widget buildTopInfoCard(BuildContext context, String scoreText,
-      String skinType, List<SkinIssueDetail> overallIssues) {
+  Widget _buildTopInfoCard(
+      BuildContext context, String scoreText, String skinType) {
     return Container(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary.withAlpha(20),
         borderRadius: BorderRadius.circular(16.0),
-        border: Border.all(
-            color: Theme.of(context).colorScheme.primary.withAlpha(40)),
       ),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 2,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Điểm trung bình",
-                    style:
-                        TextStyle(color: Colors.grey.shade700, fontSize: 13)),
-                const SizedBox(height: 8),
-                Text(scoreText,
+      child: IntrinsicHeight(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            // Cột Điểm trung bình
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Điểm số da",
+                    style: TextStyle(
+                        color: Colors.grey.shade700,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(height: 8),
+                  Text(
+                    scoreText,
                     style: const TextStyle(
                         fontSize: 34,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black87)),
-              ],
+                        color: Colors.black87),
+                  ),
+                ],
+              ),
             ),
-          ),
-          Container(height: 64, width: 1, color: Colors.purple.shade100),
-          const SizedBox(width: 12),
-          Expanded(
-            flex: 4,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("Vấn đề chính",
-                    style:
-                        TextStyle(color: Colors.grey.shade700, fontSize: 13)),
-                const SizedBox(height: 8),
-                if (overallIssues.isNotEmpty)
-                  Wrap(
-                    spacing: 8,
-                    runSpacing: 6,
-                    children: overallIssues.take(2).map((issue) {
-                      return Chip(
-                        label: Text(issue.label,
-                            style: const TextStyle(fontSize: 12)),
-                        backgroundColor: Theme.of(context)
-                            .colorScheme
-                            .secondary
-                            .withAlpha(30),
-                        side: BorderSide.none,
-                        visualDensity: VisualDensity.compact,
-                      );
-                    }).toList(),
-                  )
-                else
-                  Text("Tuyệt vời, không có vấn đề lớn!",
-                      style: TextStyle(color: Colors.grey.shade700)),
-              ],
+            const VerticalDivider(
+                width: 1, thickness: 1, indent: 10, endIndent: 10),
+            // Cột Loại da
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Loại da của bạn",
+                    style: TextStyle(
+                        color: Colors.grey.shade700,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(height: 8),
+
+                  // [SỬA LỖI] - Hiển thị toàn bộ chuỗi skinType
+                  Text(
+                    skinType, // <-- Đã xóa .split(' ')[0]
+                    textAlign: TextAlign.center,
+                    maxLines: 2, // Cho phép hiển thị tối đa 2 dòng
+                    overflow: TextOverflow.ellipsis, // Thêm dấu ... nếu quá dài
+                    style: const TextStyle(
+                      fontSize: 18, // Điều chỉnh font size cho phù hợp
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
+                ],
+              ),
             ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Các hàm còn lại giữ nguyên như cũ...
+  Widget _buildImprovementTeaser(BuildContext context) {
+    final improvementTips =
+        analysis.improvements.values.expand((tips) => tips).take(2).toList();
+    if (improvementTips.isEmpty) return const SizedBox.shrink();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text("Phương pháp cải thiện",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
+        ...improvementTips.map((tip) => ListTile(
+              leading: Icon(Icons.check_circle_outline,
+                  color: Theme.of(context).colorScheme.primary),
+              title: Text(tip),
+              dense: true,
+              contentPadding: EdgeInsets.zero,
+            )),
+      ],
+    );
+  }
+
+  Widget _buildProductTeaser(BuildContext context, WidgetRef ref) {
+    final products = analysis.products;
+    if (products.isEmpty) return const SizedBox.shrink();
+
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text("Sản phẩm gợi ý",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            TextButton(
+              onPressed: () {
+                ref.read(mainTabIndexProvider.notifier).state = 1;
+                ref.read(suggestionsTabIndexProvider.notifier).state = 1;
+              },
+              child: const Text("Nhiều hơn >>"),
+            ),
+          ],
+        ),
+        const SizedBox(height: 12),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: products
+              .take(3)
+              .map((product) => _buildMiniProductCard(product))
+              .toList(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMiniProductCard(ProductSuggestion product) {
+    return SizedBox(
+      width: 100,
+      child: Column(
+        children: [
+          Container(
+            height: 80,
+            width: 80,
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(12)),
+            child: Image.network(product.image,
+                fit: BoxFit.contain,
+                errorBuilder: (c, e, s) => const Icon(Icons.image)),
           ),
+          const SizedBox(height: 8),
+          Text(product.name,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style:
+                  const TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
         ],
       ),
     );
   }
 
-  // [CẢI TIẾN #2] - Hiển thị điểm số động từ model
-  Widget buildGridInfoCards(BuildContext context) {
-    // Ánh xạ giữa tên hiển thị và key trong model AnalysisDetail
+  Widget _buildGridInfoCards(BuildContext context) {
     final List<Map<String, dynamic>> issueDetails = [
       {'label': 'Mụn', 'key': 'acne', 'color': const Color(0xFFF44336)},
       {
@@ -175,7 +245,6 @@ class AnalysisPanelContent extends StatelessWidget {
       ),
       itemBuilder: (context, i) {
         final detail = issueDetails[i];
-        // Dùng hàm helper để lấy điểm số động từ `analysis`
         final score = _getScoreValue(detail['key']);
 
         return buildInfoCard(
@@ -187,7 +256,25 @@ class AnalysisPanelContent extends StatelessWidget {
     );
   }
 
-  // [CẢI TIẾN #3] - Giao diện thẻ mới, hiển thị điểm số thay vì ổ khóa
+  int _getScoreValue(String key) {
+    switch (key) {
+      case 'acne':
+        return analysis.analysis.acne;
+      case 'pores':
+        return analysis.analysis.pores;
+      case 'pigmentation':
+        return analysis.analysis.pigmentation;
+      case 'wrinkles':
+        return analysis.analysis.wrinkles;
+      case 'texture':
+        return analysis.analysis.texture;
+      case 'redness':
+        return analysis.analysis.redness;
+      default:
+        return 0;
+    }
+  }
+
   Widget buildInfoCard(String title, int score, Color dotColor) {
     return Container(
       padding: const EdgeInsets.all(12.0),
@@ -195,9 +282,7 @@ class AnalysisPanelContent extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(16.0),
         border: Border.all(color: Colors.grey.shade200, width: 1.2),
-        boxShadow: [
-          BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 8),
-        ],
+        boxShadow: [BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 8)],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -210,21 +295,18 @@ class AnalysisPanelContent extends StatelessWidget {
           const Spacer(),
           Center(
             child: Text(
-              score.toString(), // Hiển thị điểm số ở giữa
+              score.toString(),
               style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 28, // Font lớn hơn
-                color: Colors.black87,
-              ),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 28,
+                  color: Colors.black87),
             ),
           ),
           const Spacer(),
           Align(
             alignment: Alignment.bottomRight,
-            child: Text(
-              '/10',
-              style: TextStyle(color: Colors.grey.shade500, fontSize: 12),
-            ),
+            child: Text('/10',
+                style: TextStyle(color: Colors.grey.shade500, fontSize: 12)),
           ),
         ],
       ),
