@@ -35,5 +35,10 @@
     "editProfile": "Edit Profile",
     "notifications": "Notifications",
     "aboutUs": "About Us",
-    "logout": "Logout"
+    "logout": "Logout",
+    "scoreCommentExcellent": "Excellent! Your skin is nearly perfect ({score}/10)",
+    "scoreCommentVeryGood": "Very Good! Your skin is in a healthy state ({score}/10)",
+    "scoreCommentGood": "Good! A few minor points to note ({score}/10)",
+    "scoreCommentAverage": "Average. Your skin needs more care ({score}/10)",
+    "scoreCommentNeedsImprovement": "Needs Improvement! Please review the suggestions below ({score}/10)"
 }
