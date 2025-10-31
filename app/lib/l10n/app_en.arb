@@ -61,5 +61,8 @@
     "lifestyleTip2Title": "Balanced Diet",
     "lifestyleTip2Subtitle": "Incorporate greens and fruits to provide vitamins for your skin.",
     "lifestyleTip3Title": "Get Enough Sleep",
-    "lifestyleTip3Subtitle": "Sleep gives your skin time to recover and regenerate cells."
+    "lifestyleTip3Subtitle": "Sleep gives your skin time to recover and regenerate cells.",
+    "language": "Language",
+  "darkMode": "Dark Mode",
+  "selectLanguage": "Select Language"
 }
