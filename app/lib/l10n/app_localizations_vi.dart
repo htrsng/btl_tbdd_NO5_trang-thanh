@@ -120,4 +120,29 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get logout => 'Đăng xuất';
+
+  @override
+  String scoreCommentExcellent(Object score) {
+    return 'Tuyệt vời! Làn da của bạn gần như hoàn hảo ($score/10)';
+  }
+
+  @override
+  String scoreCommentVeryGood(Object score) {
+    return 'Rất tốt! Da của bạn đang ở trạng thái khỏe mạnh ($score/10)';
+  }
+
+  @override
+  String scoreCommentGood(Object score) {
+    return 'Khá ổn! Cần chú ý một vài điểm nhỏ ($score/10)';
+  }
+
+  @override
+  String scoreCommentAverage(Object score) {
+    return 'Bình thường. Da bạn cần được chăm sóc kỹ hơn ($score/10)';
+  }
+
+  @override
+  String scoreCommentNeedsImprovement(Object score) {
+    return 'Cần cải thiện! Hãy xem kỹ các đề xuất bên dưới ($score/10)';
+  }
 }

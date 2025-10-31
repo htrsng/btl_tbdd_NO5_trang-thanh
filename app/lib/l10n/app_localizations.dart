@@ -313,6 +313,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Logout'**
   String get logout;
+
+  /// No description provided for @scoreCommentExcellent.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent! Your skin is nearly perfect ({score}/10)'**
+  String scoreCommentExcellent(Object score);
+
+  /// No description provided for @scoreCommentVeryGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Very Good! Your skin is in a healthy state ({score}/10)'**
+  String scoreCommentVeryGood(Object score);
+
+  /// No description provided for @scoreCommentGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Good! A few minor points to note ({score}/10)'**
+  String scoreCommentGood(Object score);
+
+  /// No description provided for @scoreCommentAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Average. Your skin needs more care ({score}/10)'**
+  String scoreCommentAverage(Object score);
+
+  /// No description provided for @scoreCommentNeedsImprovement.
+  ///
+  /// In en, this message translates to:
+  /// **'Needs Improvement! Please review the suggestions below ({score}/10)'**
+  String scoreCommentNeedsImprovement(Object score);
 }
 
 class _AppLocalizationsDelegate

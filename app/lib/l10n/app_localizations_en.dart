@@ -120,4 +120,29 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logout => 'Logout';
+
+  @override
+  String scoreCommentExcellent(Object score) {
+    return 'Excellent! Your skin is nearly perfect ($score/10)';
+  }
+
+  @override
+  String scoreCommentVeryGood(Object score) {
+    return 'Very Good! Your skin is in a healthy state ($score/10)';
+  }
+
+  @override
+  String scoreCommentGood(Object score) {
+    return 'Good! A few minor points to note ($score/10)';
+  }
+
+  @override
+  String scoreCommentAverage(Object score) {
+    return 'Average. Your skin needs more care ($score/10)';
+  }
+
+  @override
+  String scoreCommentNeedsImprovement(Object score) {
+    return 'Needs Improvement! Please review the suggestions below ($score/10)';
+  }
 }

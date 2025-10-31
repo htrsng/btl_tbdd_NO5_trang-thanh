@@ -35,5 +35,10 @@
     "editProfile": "Chỉnh sửa hồ sơ",
     "notifications": "Cài đặt thông báo",
     "aboutUs": "Về chúng tôi",
-    "logout": "Đăng xuất"
+    "logout": "Đăng xuất",
+    "scoreCommentExcellent": "Tuyệt vời! Làn da của bạn gần như hoàn hảo ({score}/10)",
+    "scoreCommentVeryGood": "Rất tốt! Da của bạn đang ở trạng thái khỏe mạnh ({score}/10)",
+    "scoreCommentGood": "Khá ổn! Cần chú ý một vài điểm nhỏ ({score}/10)",
+    "scoreCommentAverage": "Bình thường. Da bạn cần được chăm sóc kỹ hơn ({score}/10)",
+    "scoreCommentNeedsImprovement": "Cần cải thiện! Hãy xem kỹ các đề xuất bên dưới ({score}/10)"
 }
