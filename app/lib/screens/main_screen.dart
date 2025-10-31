@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart'; // Thêm import
-import '../providers/navigation_provider.dart'; // Import provider mới
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'home_screen.dart';
 import 'suggestions_screen.dart';
 import 'history_screen.dart';
 import 'profile_screen.dart';
 import '../widgets/bottom_tab_bar.dart';
 
-// [CẢI TIẾN] - Chuyển sang ConsumerStatefulWidget để có thể dùng 'ref'
-class MainScreen extends ConsumerStatefulWidget {
+// Đây chính là TabScreen cũ của bạn, nhưng đã được sửa lỗi và nâng cấp
+class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
   @override
-  ConsumerState<MainScreen> createState() => _MainScreenState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _MainScreenState extends ConsumerState<MainScreen> {
-  // Biến state không còn cần thiết nữa, chúng ta sẽ dùng provider.
-  // int _currentIndex = 0;
+class _MainScreenState extends State<MainScreen> {
+  // [SỬA LỖI] - Bỏ 'final' để biến này có thể thay đổi
+  int _currentIndex = 0; 
 
+  // Danh sách các màn hình không đổi
   static const List<Widget> _tabs = [
     HomeScreen(),
     SuggestionsScreen(),
@@ -26,17 +26,21 @@ class _MainScreenState extends ConsumerState<MainScreen> {
     ProfileScreen(),
   ];
 
+  // Hàm callback để nhận index mới từ BottomTabBar
+  void _onTabTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    // [CẢI TIẾN] - Lắng nghe sự thay đổi từ provider
-    final currentIndex = ref.watch(mainTabIndexProvider);
-
     return Scaffold(
-      body: IndexedStack(index: currentIndex, children: _tabs),
+      body: IndexedStack(index: _currentIndex, children: _tabs),
+      // [CẢI TIẾN] - Truyền state và callback xuống cho BottomTabBar
       bottomNavigationBar: BottomTabBar(
-        currentIndex: currentIndex,
-        // Khi người dùng nhấn tab, cập nhật lại provider
-        onTap: (index) => ref.read(mainTabIndexProvider.notifier).state = index,
+        currentIndex: _currentIndex,
+        onTap: _onTabTapped,
       ),
     );
   }
