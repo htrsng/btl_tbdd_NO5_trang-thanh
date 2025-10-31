@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import '../l10n/app_localizations.dart';
 
 class BottomTabBar extends StatelessWidget {
-  // [SỬA LỖI TẠI ĐÂY] - Thêm các biến để nhận dữ liệu
+  // Thêm các biến để nhận dữ liệu từ widget cha
   final int currentIndex;
-  final ValueChanged<int> onTap; // Kiểu dữ liệu cho một hàm callback
+  final ValueChanged<int> onTap;
 
-  // [SỬA LỖI TẠI ĐÂY] - Định nghĩa constructor để nhận các tham số có tên
   const BottomTabBar({
     super.key,
     required this.currentIndex,
@@ -14,40 +14,32 @@ class BottomTabBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Simple locale-aware helper: prefer Vietnamese when locale.languageCode == 'vi'
-    String t(String en, String vi) {
-      try {
-        final code = Localizations.localeOf(context).languageCode;
-        return code == 'vi' ? vi : en;
-      } catch (_) {
-        return en;
-      }
-    }
+    final l10n = AppLocalizations.of(context)!;
 
     return BottomNavigationBar(
       currentIndex: currentIndex, // Sử dụng biến được truyền vào
-      onTap: onTap, // Sử dụng hàm callback được truyền vào
+      onTap: onTap,             // Sử dụng hàm callback được truyền vào
       // Các thuộc tính màu sắc, font chữ sẽ tự động lấy từ AppTheme
-      items: <BottomNavigationBarItem>[
+      items: [
         BottomNavigationBarItem(
           icon: const Icon(Icons.home_outlined),
           activeIcon: const Icon(Icons.home),
-          label: t('Home', 'Trang chủ'),
+          label: l10n.homeTab,
         ),
         BottomNavigationBarItem(
           icon: const Icon(Icons.lightbulb_outline),
           activeIcon: const Icon(Icons.lightbulb),
-          label: t('Suggestions', 'Gợi ý'),
+          label: l10n.suggestionsTab,
         ),
         BottomNavigationBarItem(
           icon: const Icon(Icons.history_outlined),
           activeIcon: const Icon(Icons.history),
-          label: t('History', 'Lịch sử'),
+          label: l10n.historyTab,
         ),
         BottomNavigationBarItem(
           icon: const Icon(Icons.person_outline),
           activeIcon: const Icon(Icons.person),
-          label: t('Profile', 'Hồ sơ'),
+          label: l10n.profileTab,
         ),
       ],
     );
