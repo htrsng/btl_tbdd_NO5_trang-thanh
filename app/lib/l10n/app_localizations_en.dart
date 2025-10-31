@@ -103,8 +103,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skinScore => 'Skin Score';
 
   @override
+  String get skinType => 'Skin Type';
+
+  @override
   String get noHistoryMessage =>
       'No history yet. Let\'s start your first analysis!';
+
+  @override
+  String get startAnalysisButton => 'Start Analysis';
+
+  @override
+  String get deleteAll => 'Delete All';
 
   @override
   String get profileTitle => 'Profile';
@@ -145,4 +154,24 @@ class AppLocalizationsEn extends AppLocalizations {
   String scoreCommentNeedsImprovement(Object score) {
     return 'Needs Improvement! Please review the suggestions below ($score/10)';
   }
+
+  @override
+  String get deleteHistoryTitle => 'Delete History';
+
+  @override
+  String get deleteAllHistoryConfirmation =>
+      'Are you sure you want to delete all analysis history? This action cannot be undone.';
+
+  @override
+  String get deleteSingleHistoryConfirmation =>
+      'Are you sure you want to delete this item?';
+
+  @override
+  String get deleteButton => 'Delete';
+
+  @override
+  String get cancelButton => 'Cancel';
+
+  @override
+  String get historyDetailTitle => 'Analysis Details';
 }

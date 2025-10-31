@@ -30,7 +30,10 @@
     "skinProgressionChartTitle": "Skin Progression",
     "analysisDate": "Analysis Date",
     "skinScore": "Skin Score",
+    "skinType": "Skin Type",
     "noHistoryMessage": "No history yet. Let's start your first analysis!",
+    "startAnalysisButton": "Start Analysis",
+    "deleteAll": "Delete All",
     "profileTitle": "Profile",
     "editProfile": "Edit Profile",
     "notifications": "Notifications",
@@ -40,5 +43,11 @@
     "scoreCommentVeryGood": "Very Good! Your skin is in a healthy state ({score}/10)",
     "scoreCommentGood": "Good! A few minor points to note ({score}/10)",
     "scoreCommentAverage": "Average. Your skin needs more care ({score}/10)",
-    "scoreCommentNeedsImprovement": "Needs Improvement! Please review the suggestions below ({score}/10)"
+    "scoreCommentNeedsImprovement": "Needs Improvement! Please review the suggestions below ({score}/10)",
+    "deleteHistoryTitle": "Delete History",
+    "deleteAllHistoryConfirmation": "Are you sure you want to delete all analysis history? This action cannot be undone.",
+    "deleteSingleHistoryConfirmation": "Are you sure you want to delete this item?",
+    "deleteButton": "Delete",
+    "cancelButton": "Cancel",
+    "historyDetailTitle": "Analysis Details"
 }

@@ -94,7 +94,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get historyTitle => 'Lịch sử phân tích';
 
   @override
-  String get skinProgressionChartTitle => 'Tiến bộ của làn da';
+  String get skinProgressionChartTitle => 'Tiến trình của làn da';
 
   @override
   String get analysisDate => 'Ngày phân tích';
@@ -103,8 +103,17 @@ class AppLocalizationsVi extends AppLocalizations {
   String get skinScore => 'Điểm số da';
 
   @override
+  String get skinType => 'Loại da';
+
+  @override
   String get noHistoryMessage =>
       'Chưa có lịch sử nào. Hãy bắt đầu lần phân tích đầu tiên của bạn!';
+
+  @override
+  String get startAnalysisButton => 'Bắt đầu phân tích';
+
+  @override
+  String get deleteAll => 'Xóa tất cả';
 
   @override
   String get profileTitle => 'Hồ sơ';
@@ -145,4 +154,24 @@ class AppLocalizationsVi extends AppLocalizations {
   String scoreCommentNeedsImprovement(Object score) {
     return 'Cần cải thiện! Hãy xem kỹ các đề xuất bên dưới ($score/10)';
   }
+
+  @override
+  String get deleteHistoryTitle => 'Xóa Lịch sử';
+
+  @override
+  String get deleteAllHistoryConfirmation =>
+      'Bạn có chắc chắn muốn xóa toàn bộ lịch sử phân tích không? Hành động này không thể hoàn tác.';
+
+  @override
+  String get deleteSingleHistoryConfirmation =>
+      'Bạn có chắc chắn muốn xóa mục này không?';
+
+  @override
+  String get deleteButton => 'Xóa';
+
+  @override
+  String get cancelButton => 'Hủy';
+
+  @override
+  String get historyDetailTitle => 'Chi tiết Phân tích';
 }

@@ -278,11 +278,29 @@ abstract class AppLocalizations {
   /// **'Skin Score'**
   String get skinScore;
 
+  /// No description provided for @skinType.
+  ///
+  /// In en, this message translates to:
+  /// **'Skin Type'**
+  String get skinType;
+
   /// No description provided for @noHistoryMessage.
   ///
   /// In en, this message translates to:
   /// **'No history yet. Let\'s start your first analysis!'**
   String get noHistoryMessage;
+
+  /// No description provided for @startAnalysisButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Analysis'**
+  String get startAnalysisButton;
+
+  /// No description provided for @deleteAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete All'**
+  String get deleteAll;
 
   /// No description provided for @profileTitle.
   ///
@@ -343,6 +361,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Needs Improvement! Please review the suggestions below ({score}/10)'**
   String scoreCommentNeedsImprovement(Object score);
+
+  /// No description provided for @deleteHistoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete History'**
+  String get deleteHistoryTitle;
+
+  /// No description provided for @deleteAllHistoryConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete all analysis history? This action cannot be undone.'**
+  String get deleteAllHistoryConfirmation;
+
+  /// No description provided for @deleteSingleHistoryConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure you want to delete this item?'**
+  String get deleteSingleHistoryConfirmation;
+
+  /// No description provided for @deleteButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete'**
+  String get deleteButton;
+
+  /// No description provided for @cancelButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancelButton;
+
+  /// No description provided for @historyDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Analysis Details'**
+  String get historyDetailTitle;
 }
 
 class _AppLocalizationsDelegate
