@@ -1,4 +1,5 @@
-import 'package.flutter/material.dart';
+// [SỬA LỖI TẠI ĐÂY] - Thêm dòng import quan trọng này
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,10 +18,11 @@ class ThemeNotifier extends StateNotifier<ThemeMode> {
 
   Future<void> setTheme(ThemeMode themeMode) async {
     if (state == themeMode) return;
-    
+
     state = themeMode;
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_themePrefKey, themeMode == ThemeMode.dark ? 'dark' : 'light');
+    await prefs.setString(
+        _themePrefKey, themeMode == ThemeMode.dark ? 'dark' : 'light');
   }
 }
 

@@ -41,7 +41,6 @@ class AppTheme {
       surface: AppColors.surface,
     ),
   );
-  / [THÊM MỚI] - Giao diện cho chế độ tối
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
@@ -62,5 +61,4 @@ class AppTheme {
       surface: Color(0xFF1E1E1E),
     ),
   );
-
 }
