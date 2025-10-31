@@ -239,9 +239,9 @@ class _UploadStepState extends ConsumerState<UploadStep> {
           mainAxisSize: MainAxisSize.min,
           children: [
             // Cụm icon chọn góc đã bị loại bỏ
-            buildShutterControls(), // Nút chụp ảnh được đưa lên trên
+            _buildThumbnailRow(images), // Nút chụp ảnh được đưa lên trên
             const SizedBox(height: 16),
-            _buildThumbnailRow(images), // Hàng thumbnail giờ là bộ chọn chính
+            buildShutterControls(), // Hàng thumbnail giờ là bộ chọn chính
           ],
         ),
       );
