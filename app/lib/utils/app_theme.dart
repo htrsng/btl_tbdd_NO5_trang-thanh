@@ -41,4 +41,26 @@ class AppTheme {
       surface: AppColors.surface,
     ),
   );
+  / [THÊM MỚI] - Giao diện cho chế độ tối
+  static final ThemeData darkTheme = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
+    primaryColor: AppColors.primary,
+    scaffoldBackgroundColor: const Color(0xFF121212),
+    cardColor: const Color(0xFF1E1E1E),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Color(0xFF1E1E1E),
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: Color(0xFF1E1E1E),
+      selectedItemColor: AppColors.primary,
+      unselectedItemColor: Colors.grey,
+    ),
+    colorScheme: const ColorScheme.dark(
+      primary: AppColors.primary,
+      secondary: AppColors.accent,
+      surface: Color(0xFF1E1E1E),
+    ),
+  );
+
 }
