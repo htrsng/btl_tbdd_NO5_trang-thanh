@@ -176,6 +176,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get historyDetailTitle => 'Analysis Details';
 
   @override
+  String get language => 'Language';
+
+  @override
+  String get darkMode => 'Dark Mode';
+
+  @override
+  String get selectLanguage => 'Select Language';
+
+  @override
   String get lifestyleTip1Title => 'Stay Hydrated';
 
   @override
@@ -195,13 +204,4 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get lifestyleTip3Subtitle =>
       'Sleep gives your skin time to recover and regenerate cells.';
-
-  @override
-  String get language => 'Language';
-
-  @override
-  String get darkMode => 'Dark Mode';
-
-  @override
-  String get selectLanguage => 'Select Language';
 }

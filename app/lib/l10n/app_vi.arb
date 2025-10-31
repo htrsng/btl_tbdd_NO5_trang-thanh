@@ -50,13 +50,13 @@
     "deleteButton": "Xóa",
     "cancelButton": "Hủy",
     "historyDetailTitle": "Chi tiết Phân tích",
+    "language": "Ngôn ngữ",
+    "darkMode": "Chế độ tối",
+    "selectLanguage": "Chọn ngôn ngữ",
     "lifestyleTip1Title": "Uống Đủ Nước",
     "lifestyleTip1Subtitle": "Hydrat hóa là chìa khóa cho làn da khỏe mạnh và căng bóng.",
     "lifestyleTip2Title": "Chế độ Ăn Cân bằng",
     "lifestyleTip2Subtitle": "Bổ sung rau xanh và trái cây để cung cấp vitamin cho da.",
     "lifestyleTip3Title": "Ngủ Đủ Giấc",
-    "lifestyleTip3Subtitle": "Giấc ngủ giúp da có thời gian phục hồi và tái tạo tế bào.",
-    "language": "Ngôn ngữ",
-  "darkMode": "Chế độ tối",
-  "selectLanguage": "Chọn ngôn ngữ"
+    "lifestyleTip3Subtitle": "Giấc ngủ giúp da có thời gian phục hồi và tái tạo tế bào."
 }

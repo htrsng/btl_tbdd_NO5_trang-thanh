@@ -176,6 +176,15 @@ class AppLocalizationsVi extends AppLocalizations {
   String get historyDetailTitle => 'Chi tiết Phân tích';
 
   @override
+  String get language => 'Ngôn ngữ';
+
+  @override
+  String get darkMode => 'Chế độ tối';
+
+  @override
+  String get selectLanguage => 'Chọn ngôn ngữ';
+
+  @override
   String get lifestyleTip1Title => 'Uống Đủ Nước';
 
   @override
@@ -195,13 +204,4 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String get lifestyleTip3Subtitle =>
       'Giấc ngủ giúp da có thời gian phục hồi và tái tạo tế bào.';
-
-  @override
-  String get language => 'Ngôn ngữ';
-
-  @override
-  String get darkMode => 'Chế độ tối';
-
-  @override
-  String get selectLanguage => 'Chọn ngôn ngữ';
 }
