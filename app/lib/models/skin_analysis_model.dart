@@ -7,7 +7,7 @@ class SkinIssueDetail {
   // ... (giữ nguyên code)
   @JsonKey(defaultValue: '')
   final String label;
-
+//giữ code
   @JsonKey(defaultValue: '')
   final String severity;
 
