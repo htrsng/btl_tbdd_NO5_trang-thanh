@@ -1,11 +1,9 @@
 import 'dart:math' as math;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../models/skin_analysis_model.dart';
 import 'app_state_provider.dart';
 
-// Lớp AnalysisFlowState không thay đổi, giữ nguyên
 class AnalysisFlowState {
   final List<XFile?> images;
   final Map<String, String> surveyAnswers;
@@ -44,8 +42,6 @@ class AnalysisFlowState {
 class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
   final Ref _ref;
   AnalysisFlowNotifier(this._ref) : super(const AnalysisFlowState());
-
-  // Các hàm setImage, removeImage, setSurveyAnswer, clearError, resetFlow không đổi...
   Future<void> setImage(int index, XFile image) async {
     final newImages = List<XFile?>.from(state.images);
     newImages[index] = image;
@@ -72,7 +68,6 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
     state = const AnalysisFlowState();
   }
 
-  // Hàm analyze không đổi
   Future<void> analyze() async {
     if (state.images.any((img) => img == null) ||
         state.surveyAnswers.values.any((ans) => ans.isEmpty)) {
@@ -92,7 +87,6 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
     }
   }
 
-  // Hàm _generateFakeAnalysis giờ đây gọi một helper "thông minh" hơn
   SkinAnalysis _generateFakeAnalysis() {
     final random = math.Random();
     final detailedScores = {
@@ -106,13 +100,12 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
     final double averageScore =
         detailedScores.values.reduce((a, b) => a + b) / detailedScores.length;
 
-    // [CẢI TIẾN] - Gọi hàm helper để xác định loại da một cách thông minh
     final String determinedSkinType =
         _determineSkinTypeFromSurvey(state.surveyAnswers);
 
     return SkinAnalysis(
       skinScore: averageScore,
-      skinType: determinedSkinType, // <-- Sử dụng kết quả thông minh
+      skinType: determinedSkinType,
       analysis: AnalysisDetail(
         overallIssues: [
           SkinIssueDetail(
@@ -140,7 +133,6 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
     );
   }
 
-  // [NÂNG CẤP "TRÍ TUỆ"] - Hàm này giờ đây sử dụng hệ thống tính điểm
   String _determineSkinTypeFromSurvey(Map<String, String> answers) {
     // 1. Khởi tạo điểm số cho các đặc tính
     Map<String, int> scores = {'dầu': 0, 'khô': 0, 'nhạy cảm': 0};

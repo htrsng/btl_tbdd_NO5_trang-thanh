@@ -6,7 +6,6 @@ import 'history_screen.dart';
 import 'profile_screen.dart';
 import '../widgets/bottom_tab_bar.dart';
 
-// Đây chính là TabScreen cũ của bạn, nhưng đã được sửa lỗi và nâng cấp
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -16,7 +15,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   // [SỬA LỖI] - Bỏ 'final' để biến này có thể thay đổi
-  int _currentIndex = 0; 
+  int _currentIndex = 0;
 
   // Danh sách các màn hình không đổi
   static const List<Widget> _tabs = [

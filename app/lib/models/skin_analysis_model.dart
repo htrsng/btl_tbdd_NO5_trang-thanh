@@ -4,7 +4,6 @@ part 'skin_analysis_model.g.dart';
 
 @JsonSerializable()
 class SkinIssueDetail {
-  // ... (giữ nguyên code)
   @JsonKey(defaultValue: '')
   final String label;
 
@@ -20,7 +19,6 @@ class SkinIssueDetail {
 
 @JsonSerializable(explicitToJson: true)
 class AnalysisDetail {
-  // ... (giữ nguyên code)
   @JsonKey(name: 'overall_issues', defaultValue: [])
   final List<SkinIssueDetail> overallIssues;
 
@@ -54,7 +52,6 @@ class AnalysisDetail {
 
 @JsonSerializable()
 class ProductSuggestion {
-  // ... (giữ nguyên code)
   @JsonKey(defaultValue: '')
   final String name;
   @JsonKey(defaultValue: '')

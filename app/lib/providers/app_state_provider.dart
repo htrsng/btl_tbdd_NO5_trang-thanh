@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/skin_analysis_model.dart';
 
 class AppState {
-  final int currentStep; // 0: intro, 1: upload, 2: survey, 3: results
+  final int currentStep;
   final SkinAnalysis? analysis;
 
   const AppState({required this.currentStep, this.analysis});
@@ -24,11 +24,10 @@ class AppStateNotifier extends StateNotifier<AppState> {
     state = state.copyWith(currentStep: step);
   }
 
-  // Hàm này giờ đây sẽ không chỉ lưu dữ liệu mà còn tự động chuyển sang bước 3.
   void setAnalysis(SkinAnalysis analysis) {
     state = state.copyWith(
       analysis: analysis,
-      currentStep: 3, // <-- Dòng quan trọng nhất
+      currentStep: 3,
     );
   }
 }

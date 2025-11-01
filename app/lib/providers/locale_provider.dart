@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// Key để lưu ngôn ngữ trong SharedPreferences
 const String _languagePrefKey = 'appLanguageCode';
 
 class LocaleNotifier extends StateNotifier<Locale> {
