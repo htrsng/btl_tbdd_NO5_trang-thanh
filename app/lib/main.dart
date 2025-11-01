@@ -22,8 +22,6 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'SkinAI',
       debugShowCheckedModeBanner: false,
-      
-      // [CẢI TIẾN] - Áp dụng theme pastel và chế độ Sáng/Tối
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: themeMode,
@@ -33,7 +31,6 @@ class MyApp extends ConsumerWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       locale: locale,
       
-      // Khởi chạy MainScreen
       home: const MainScreen(),
     );
   }
