@@ -13,6 +13,7 @@ class FaceGuidePainter extends CustomPainter {
 
     // Oval face
     canvas.drawOval(Rect.fromLTWH(0, 0, size.width, size.height), paint);
+    //chinh sửa kích thước face
 
     // Nose
     final nose = Path()

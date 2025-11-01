@@ -6,7 +6,7 @@ part 'skin_analysis_model.g.dart';
 class SkinIssueDetail {
   @JsonKey(defaultValue: '')
   final String label;
-
+//giữ code
   @JsonKey(defaultValue: '')
   final String severity;
 
