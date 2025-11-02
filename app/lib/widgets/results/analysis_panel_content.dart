@@ -8,11 +8,12 @@ import '../../screens/fake_expert_screen.dart';
 
 class AnalysisPanelContent extends ConsumerWidget {
   final SkinAnalysis analysis;
+
   const AnalysisPanelContent({required this.analysis, super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
+    final l10n = AppLocalizations.of(context)!; // Định nghĩa l10n ở đây
     final scoreText = analysis.skinScore.toStringAsFixed(1);
     final skinType =
         analysis.skinType.isNotEmpty ? analysis.skinType : 'Chưa xác định';
@@ -36,13 +37,21 @@ class AnalysisPanelContent extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // 1. Thẻ thông tin chung (Điểm và Loại da)
               _buildTopInfoCard(context, scoreText, skinType, l10n),
               const SizedBox(height: 24),
+
+              // 2. Phần gợi ý cải thiện
               _buildImprovementTeaser(context, l10n),
               const SizedBox(height: 24),
+
+              // 3. Phần gợi ý sản phẩm nhỏ
               _buildProductTeaser(context, ref, l10n),
               const SizedBox(height: 24),
+
               const Divider(height: 24),
+
+              // [SỬA LỖI] - Sử dụng key l10n đã thêm
               Text(
                 l10n.detailedAnalysis,
                 style:
@@ -50,18 +59,26 @@ class AnalysisPanelContent extends ConsumerWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 18),
+
+              // 4. Lưới điểm số chi tiết
               _buildGridInfoCards(context),
               const SizedBox(height: 24),
+
+              // 5. Các mục Kêu gọi hành động (CTA)
               _buildCtaSection(context, l10n),
               const SizedBox(height: 24),
+
+              // 6. Lưu ý quan trọng
               _buildDisclaimerBox(context, l10n),
-              const SizedBox(height: 24),
+              const SizedBox(height: 24), // Thêm khoảng đệm ở dưới cùng
             ],
           ),
         ),
       ],
     );
   }
+
+  // --- CÁC WIDGET CON ĐÃ ĐƯỢC CẬP NHẬT ---
 
   Widget _buildTopInfoCard(BuildContext context, String scoreText,
       String skinType, AppLocalizations l10n) {
@@ -188,9 +205,13 @@ class AnalysisPanelContent extends ConsumerWidget {
             decoration: BoxDecoration(
                 color: Colors.grey.shade100,
                 borderRadius: BorderRadius.circular(12)),
-            child: Image.network(product.image,
-                fit: BoxFit.contain,
-                errorBuilder: (c, e, s) => const Icon(Icons.image)),
+            child: Image.asset(
+              // [SỬA LỖI] - Dùng Image.asset cho tài sản cục bộ
+              product.image,
+              fit: BoxFit.contain,
+              errorBuilder: (c, e, s) =>
+                  const Icon(Icons.image_not_supported, color: Colors.grey),
+            ),
           ),
           const SizedBox(height: 8),
           Text(product.name,
@@ -289,6 +310,7 @@ class AnalysisPanelContent extends ConsumerWidget {
     );
   }
 
+  // [SỬA LỖI] - Thêm xử lý null (??) cho các giá trị từ l10n
   Widget _buildCtaSection(BuildContext context, AppLocalizations l10n) {
     return Column(
       children: [
@@ -364,6 +386,7 @@ class AnalysisPanelContent extends ConsumerWidget {
     );
   }
 
+  // [SỬA LỖI] - Thêm xử lý null (??) cho các giá trị từ l10n
   Widget _buildDisclaimerBox(BuildContext context, AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.all(12.0),

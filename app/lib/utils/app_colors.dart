@@ -1,43 +1,35 @@
 import 'package:flutter/material.dart';
 
-// Lớp này chứa tất cả các hằng số màu sắc cho ứng dụng SkinAI.
 class AppColors {
-  // Constructor riêng tư để ngăn việc tạo instance của lớp này.
   AppColors._();
 
-  // --- Bảng màu Pastel chính từ ảnh ---
-  static const Color lightestBlue = Color(0xFFE0F2FC);
-  static const Color periwinkle = Color(0xFFC6DEF6);
-  static const Color steelBlue = Color(0xFF5080BE);
+  // === Bảng màu Pastel Mới ===
 
-  // Các màu hồng này được lấy mẫu trực quan từ ảnh để đảm bảo chính xác.
-  static const Color lightPink = Color(0xFFF7D8E4);
-  static const Color mediumPink = Color(0xFFE6C7D6);
+  // Màu Xanh/Tím chủ đạo (Từ IntroStep của bạn)
+  static const Color primaryBlue = Color(0xFF5080BE);
+  static const Color primaryLavender = Color(0xFFC6DEF6);
 
-  // --- Màu sắc theo ngữ nghĩa (Semantic Colors) ---
-  // Chúng ta gán các màu trong bảng màu vào các vai trò cụ thể.
+  // Màu Hồng/Nude nhấn (Từ bảng màu pastel)
+  static const Color accentPink = Color(0xFFE6F5FA); // Mã màu này là màu hồng
+  static const Color accentPinkLight =
+      Color(0xFFF7D8E4); // Lấy từ mã màu thực tế của ảnh
 
-  /// Màu chính cho các hành động quan trọng, AppBar, nút bấm.
-  static const Color primary = steelBlue;
+  // Màu Nền (Rất quan trọng!)
+  // Thay vì trắng tinh (0xFFFFFFFF), chúng ta dùng một màu trắng ngà/xám cực nhạt.
+  // Đây là bí quyết để làm cho giao diện trông "cao cấp" và dịu mắt.
+  static const Color background = Color(0xFFF8F9FE);
+  static const Color surface = Colors.white; // Màu cho các thẻ Card
 
-  /// Màu nhấn, dùng cho các thành phần phụ hoặc khi cần làm nổi bật.
-  static const Color accent = lightPink;
-
-  /// Màu nền chính của các màn hình.
-  static const Color background = Color(0xFFFEFEFE); // Một màu trắng rất nhẹ
-
-  /// Màu nền cho các thành phần như Card, Dialog.
-  static const Color surface = Colors.white;
-
-  /// Màu cho các văn bản chính.
-  static const Color textPrimary = Color(0xFF333333);
-
-  /// Màu cho các văn bản phụ, mô tả.
+  // Màu Chữ
+  static const Color textPrimary =
+      Color(0xFF333333); // Than chì (đẹp hơn đen tuyền)
   static const Color textSecondary = Color(0xFF6C757D);
+  static const Color textLight = Color(0xFFB8B8B8);
 
-  /// Màu cho trạng thái thành công.
-  static const Color success = Color(0xFF28A745);
-
-  /// Màu cho trạng thái lỗi, cảnh báo.
-  static const Color error = Color(0xFFDC3545);
+  // Màu Gradient (Từ IntroStep của bạn)
+  static const Gradient primaryGradient = LinearGradient(
+    colors: [primaryLavender, primaryBlue],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
 }
