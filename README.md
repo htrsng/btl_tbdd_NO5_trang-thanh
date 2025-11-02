@@ -24,6 +24,9 @@ Dự án đáp ứng đầy đủ các yêu cầu cao nhất về giao diện (c
 | ![Intro Screen](screenshots/trangchu.png) | ![Upload Screen](screenshots/chupanh.png) | ![Survey Screen](screenshots/khaosat.png) | ![Results Screen](screenshots/ketqua.png) |
 | **Màn hình Gợi ý (Tabs)** | **Màn hình Lịch sử** | **Màn hình Hồ sơ (Cá nhân)** | **Trang "Về chúng tôi"** |
 | ![Suggestions Screen](screenshots/goiy.png) | ![History Screen](screenshots/lichsu.png) | ![Profile Screen](screenshots/canhan.png) | ![About Us Screen](screenshots/vechungtoi.png) |
+| **Màn hình tro chuyen** | **Màn hình tu van** | 
+| ![ChatAI Screen](screenshots/trochuyenAI.png) | ![Expert Screen](screenshots/tuvanbs.png) |
+
 
 ### 🌟 Tính năng chi tiết:
 

@@ -1,4 +1,3 @@
-// Màn hình Hồ sơ, cho phép người dùng thay đổi Ngôn ngữ và Chế độ Sáng/Tối.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../l10n/app_localizations.dart';
@@ -8,6 +7,7 @@ import 'about_us_screen.dart';
 
 class ProfileScreen extends ConsumerWidget {
   const ProfileScreen({super.key});
+
   String _getCurrentLanguageName(Locale locale) {
     switch (locale.languageCode) {
       case 'vi':
@@ -50,7 +50,6 @@ class ProfileScreen extends ConsumerWidget {
           Card(
             child: Column(
               children: [
-                // [ Mục chọn ngôn ngữ
                 ListTile(
                   leading: const Icon(Icons.language_outlined),
                   title: Text(l10n.language),
@@ -61,7 +60,6 @@ class ProfileScreen extends ConsumerWidget {
                   onTap: () => _showLanguageDialog(context, ref, l10n),
                 ),
                 const Divider(height: 1),
-                // Mục Chế độ tối
                 SwitchListTile(
                   secondary: const Icon(Icons.brightness_6_outlined),
                   title: Text(l10n.darkMode),
@@ -82,6 +80,20 @@ class ProfileScreen extends ConsumerWidget {
             child: Column(
               children: [
                 ListTile(
+                  leading: const Icon(Icons.person_outline),
+                  title: Text(l10n.editProfile),
+                  trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                  onTap: () {},
+                ),
+                const Divider(height: 1, indent: 16, endIndent: 16),
+                ListTile(
+                  leading: const Icon(Icons.notifications_none_outlined),
+                  title: Text(l10n.notifications),
+                  trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                  onTap: () {},
+                ),
+                const Divider(height: 1, indent: 16, endIndent: 16),
+                ListTile(
                   leading: const Icon(Icons.info_outline),
                   title: Text(l10n.aboutUs),
                   trailing: const Icon(Icons.arrow_forward_ios, size: 16),
@@ -93,10 +105,16 @@ class ProfileScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 24),
 
-          ListTile(
-            leading: const Icon(Icons.logout, color: Colors.red),
-            title: Text(l10n.logout, style: const TextStyle(color: Colors.red)),
-            onTap: () {},
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.logout, color: Colors.red),
+              title: Text(l10n.logout,
+                  style: const TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 16)),
+              onTap: () {},
+            ),
           ),
         ],
       ),
