@@ -188,26 +188,29 @@ class AppLocalizationsVi extends AppLocalizations {
   String get lifestyleTip1Title => 'Uống Đủ Nước';
 
   @override
-  String get lifestyleTip1Subtitle => 'Hydrat hóa là chìa khóa...';
+  String get lifestyleTip1Subtitle =>
+      'Hydrat hóa là chìa khóa cho làn da khỏe mạnh và căng bóng.';
 
   @override
   String get lifestyleTip2Title => 'Chế độ Ăn Cân bằng';
 
   @override
-  String get lifestyleTip2Subtitle => 'Bổ sung rau xanh...';
+  String get lifestyleTip2Subtitle =>
+      'Bổ sung rau xanh và trái cây để cung cấp vitamin cho da.';
 
   @override
   String get lifestyleTip3Title => 'Ngủ Đủ Giấc';
 
   @override
-  String get lifestyleTip3Subtitle => 'Giấc ngủ giúp da phục hồi...';
+  String get lifestyleTip3Subtitle =>
+      'Giấc ngủ giúp da có thời gian phục hồi và tái tạo tế bào.';
 
   @override
   String get appName => 'Ứng dụng SkinAI';
 
   @override
   String get aboutUsBody =>
-      'Chúng tôi mong muốn mang lại một giải pháp tiện lợi để mọi người có thể hiểu rõ hơn về làn da của mình và tìm ra chu trình chăm sóc phù hợp nhất.';
+      'Dự án được phát triển bởi [Tên nhóm/Tên của bạn].\n\nChúng tôi mong muốn mang lại một giải pháp tiện lợi để mọi người có thể hiểu rõ hơn về làn da của mình và tìm ra chu trình chăm sóc phù hợp nhất.';
 
   @override
   String get aboutUsLecturer => 'Giảng viên hướng dẫn: Nguyễn Xuân Quế';
