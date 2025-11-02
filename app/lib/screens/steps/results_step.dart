@@ -17,7 +17,7 @@ class ResultsStep extends ConsumerStatefulWidget {
 }
 
 class _ResultsStepState extends ConsumerState<ResultsStep> {
-  int _currentPage = 1; // Mặc định hiển thị ảnh chính diện (index 1)
+  int _currentPage = 1;
   late final PageController _pageController;
 
   @override
@@ -32,7 +32,6 @@ class _ResultsStepState extends ConsumerState<ResultsStep> {
     super.dispose();
   }
 
-  //  - Hàm helper giờ đây sử dụng đa ngôn ngữ
   String _getScoreComment(double score, AppLocalizations l10n) {
     String formattedScore = score.toStringAsFixed(1);
     if (score >= 9.0) return l10n.scoreCommentExcellent(formattedScore);
