@@ -58,5 +58,11 @@
     "lifestyleTip2Title": "Balanced Diet",
     "lifestyleTip2Subtitle": "Incorporate greens and fruits to provide vitamins for your skin.",
     "lifestyleTip3Title": "Get Enough Sleep",
-    "lifestyleTip3Subtitle": "Sleep gives your skin time to recover and regenerate cells."
+    "lifestyleTip3Subtitle": "Sleep gives your skin time to recover and regenerate cells.",
+    ,"chatWithAI": "Chat with SkinAI",
+  "chatWithAISubtitle": "Chat with our AI to get quick answers about skin issues.",
+  "connectExpert": "Connect with an Expert",
+  "connectExpertSubtitle": "Book a 1-on-1 consultation with a dermatologist.",
+  "disclaimerTitle": "Important Disclaimer",
+  "disclaimerBody": "SkinAI provides suggestions for reference only. Analysis results may not be 100% accurate. Please consult a dermatologist or medical professional for professional medical advice."
 }

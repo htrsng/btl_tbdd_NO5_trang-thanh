@@ -58,5 +58,11 @@
     "lifestyleTip2Title": "Chế độ Ăn Cân bằng",
     "lifestyleTip2Subtitle": "Bổ sung rau xanh và trái cây để cung cấp vitamin cho da.",
     "lifestyleTip3Title": "Ngủ Đủ Giấc",
-    "lifestyleTip3Subtitle": "Giấc ngủ giúp da có thời gian phục hồi và tái tạo tế bào."
+    "lifestyleTip3Subtitle": "Giấc ngủ giúp da có thời gian phục hồi và tái tạo tế bào.",
+    ,"chatWithAI": "Chat với SkinAI",
+  "chatWithAISubtitle": "Trò chuyện với AI để hiểu nhanh về các vấn đề da.",
+  "connectExpert": "Kết nối chuyên gia",
+  "connectExpertSubtitle": "Đặt lịch tư vấn 1:1 với bác sĩ da liễu.",
+  "disclaimerTitle": "Lưu ý quan trọng",
+  "disclaimerBody": "SkinAI chỉ cung cấp các gợi ý mang tính tham khảo. Kết quả phân tích có thể không chính xác 100%. Vui lòng đến gặp bác sĩ hoặc chuyên gia da liễu để được tư vấn y tế chuyên nghiệp."
 }
