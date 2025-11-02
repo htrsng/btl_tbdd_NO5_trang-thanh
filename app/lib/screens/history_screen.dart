@@ -1,3 +1,4 @@
+// Màn hình Lịch sử, hiển thị biểu đồ tiến triển và danh sách các lần phân tích da trước đây.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fl_chart/fl_chart.dart';

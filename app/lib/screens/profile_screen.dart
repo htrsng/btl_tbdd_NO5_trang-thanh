@@ -1,3 +1,4 @@
+// Màn hình Hồ sơ, cho phép người dùng thay đổi Ngôn ngữ và Chế độ Sáng/Tối.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../l10n/app_localizations.dart';

@@ -1,11 +1,11 @@
+// Màn hình Gợi ý, sử dụng TabBar để chia 3 tab con (Thói quen, Sản phẩm, Lối sống).
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/skin_analysis_model.dart';
 import '../providers/app_state_provider.dart';
-import '../providers/navigation_provider.dart'; // Import provider điều hướng
+import '../providers/navigation_provider.dart';
 import '../l10n/app_localizations.dart';
 
-// [CẢI TIẾN #1] - Chuyển sang ConsumerStatefulWidget để quản lý TabController
 class SuggestionsScreen extends ConsumerStatefulWidget {
   const SuggestionsScreen({super.key});
 
@@ -22,8 +22,6 @@ class _SuggestionsScreenState extends ConsumerState<SuggestionsScreen>
     super.initState();
     _tabController = TabController(length: 3, vsync: this);
 
-    // [CẢI TIẾN #1] - Lắng nghe provider để chuyển tab bằng code
-    // Điều này giúp nút "Nhiều hơn >>" từ ResultsStep hoạt động
     ref.listenManual(suggestionsTabIndexProvider, (previous, next) {
       if (_tabController.index != next) {
         _tabController.animateTo(next);
@@ -145,14 +143,12 @@ class _SuggestionsScreenState extends ConsumerState<SuggestionsScreen>
     );
   }
 
-  //Nâng cấp tab Lối sống để hiển thị dữ liệu mới
   Widget _buildLifestyleTab(
       BuildContext context, SkinAnalysis analysis, AppLocalizations l10n) {
     final lifestyle = analysis.lifestyleTips;
     if (lifestyle.isEmpty)
       return const Center(child: Text('Không có gợi ý về lối sống.'));
 
-    // Tái sử dụng logic của _buildHabitsTab
     return ListView(
       padding: const EdgeInsets.all(16.0),
       children: lifestyle.entries.map((entry) {

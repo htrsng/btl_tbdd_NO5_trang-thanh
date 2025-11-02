@@ -1,3 +1,4 @@
+// Trang hiển thị thông tin nhóm và giảng viên (đáp ứng yêu cầu đề tài).
 import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 
