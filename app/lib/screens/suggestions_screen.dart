@@ -27,8 +27,12 @@ class SuggestionsScreen extends ConsumerWidget {
           bottom: TabBar(
             tabs: [
               Tab(icon: const Icon(Icons.spa_outlined), text: l10n.habitsTab),
-              Tab(icon: const Icon(Icons.shopping_bag_outlined), text: l10n.productsTab),
-              Tab(icon: const Icon(Icons.self_improvement), text: l10n.lifestyleTab),
+              Tab(
+                  icon: const Icon(Icons.shopping_bag_outlined),
+                  text: l10n.productsTab),
+              Tab(
+                  icon: const Icon(Icons.self_improvement),
+                  text: l10n.lifestyleTab),
             ],
           ),
         ),
@@ -43,10 +47,8 @@ class SuggestionsScreen extends ConsumerWidget {
     );
   }
 
-  // --- WIDGET CON CHO TỪNG TAB ---
-
-  Widget _buildHabitsTab(BuildContext context, SkinAnalysis analysis, AppLocalizations l10n) {
-    // ... code giữ nguyên
+  Widget _buildHabitsTab(
+      BuildContext context, SkinAnalysis analysis, AppLocalizations l10n) {
     final improvements = analysis.improvements;
     if (improvements.isEmpty) {
       return Center(child: Text(l10n.noHabitSuggestions));
@@ -62,13 +64,16 @@ class SuggestionsScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(entry.key, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                Text(entry.key,
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 8),
                 ...entry.value.map((tip) => ListTile(
-                  leading: Icon(Icons.check_circle_outline, color: Theme.of(context).colorScheme.primary),
-                  title: Text(tip),
-                  contentPadding: EdgeInsets.zero,
-                )),
+                      leading: Icon(Icons.check_circle_outline,
+                          color: Theme.of(context).colorScheme.primary),
+                      title: Text(tip),
+                      contentPadding: EdgeInsets.zero,
+                    )),
               ],
             ),
           ),
@@ -77,13 +82,13 @@ class SuggestionsScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildProductsTab(BuildContext context, SkinAnalysis analysis, AppLocalizations l10n) {
-    // ... code giữ nguyên
+  Widget _buildProductsTab(
+      BuildContext context, SkinAnalysis analysis, AppLocalizations l10n) {
     final List<ProductSuggestion> products = analysis.products;
     if (products.isEmpty) {
       return Center(child: Text(l10n.noProductSuggestions));
     }
-    
+
     return Column(
       children: [
         Expanded(
@@ -92,7 +97,8 @@ class SuggestionsScreen extends ConsumerWidget {
             itemCount: products.length,
             itemBuilder: (context, index) {
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 24.0, horizontal: 8.0),
                 child: _ProductSuggestionCard(product: products[index]),
               );
             },
@@ -101,7 +107,8 @@ class SuggestionsScreen extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
           child: ElevatedButton.icon(
-            onPressed: () => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.featureInProgress))),
+            onPressed: () => ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(l10n.featureInProgress))),
             icon: const Icon(Icons.shopping_cart_outlined),
             label: Text(l10n.findProductsButton),
           ),
@@ -110,25 +117,23 @@ class SuggestionsScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildLifestyleTab(BuildContext context, SkinAnalysis analysis, AppLocalizations l10n) {
-    // ... code giữ nguyên
+  Widget _buildLifestyleTab(
+      BuildContext context, SkinAnalysis analysis, AppLocalizations l10n) {
     return const Center(
       child: Padding(
         padding: EdgeInsets.all(24.0),
-        child: Text('Gợi ý về lối sống, chế độ ăn uống, và các bài viết hữu ích sẽ được hiển thị ở đây.', textAlign: TextAlign.center),
+        child: Text(
+            'Gợi ý về lối sống, chế độ ăn uống, và các bài viết hữu ích sẽ được hiển thị ở đây.',
+            textAlign: TextAlign.center),
       ),
     );
   }
 }
 
-// [SỬA LỖI TẠI ĐÂY] - Cung cấp lại đầy đủ định nghĩa cho class _ProductSuggestionCard
 class _ProductSuggestionCard extends StatelessWidget {
   final ProductSuggestion product;
-
-  // Constructor đúng để nhận tham số 'product'
   const _ProductSuggestionCard({required this.product});
 
-  // Hàm 'build' đã bị thiếu
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -146,7 +151,10 @@ class _ProductSuggestionCard extends StatelessWidget {
               child: Image.network(
                 product.image,
                 fit: BoxFit.contain,
-                errorBuilder: (context, error, stack) => const Icon(Icons.image_not_supported, size: 50, color: Colors.grey),
+                errorBuilder: (context, error, stack) => const Icon(
+                    Icons.image_not_supported,
+                    size: 50,
+                    color: Colors.grey),
               ),
             ),
           ),
@@ -160,7 +168,8 @@ class _ProductSuggestionCard extends StatelessWidget {
                 children: [
                   Text(
                     product.name,
-                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),

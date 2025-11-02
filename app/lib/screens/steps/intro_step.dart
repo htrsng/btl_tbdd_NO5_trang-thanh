@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/app_state_provider.dart';
-
-// [SỬA LỖI] - Quay lại sử dụng import chuẩn cho đa ngôn ngữ
 import '../../l10n/app_localizations.dart';
 
 class IntroStep extends ConsumerStatefulWidget {
@@ -32,8 +30,6 @@ class _IntroStepState extends ConsumerState<IntroStep> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-
-    // Dữ liệu được lấy từ l10n, tách biệt khỏi giao diện
     final List<Map<String, String>> introSlidesData = [
       {
         "animation": "animations/face_scan.json",

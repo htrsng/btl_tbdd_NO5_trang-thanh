@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../l10n/app_localizations.dart';
 
 class BottomTabBar extends StatelessWidget {
-  // Thêm các biến để nhận dữ liệu từ widget cha
   final int currentIndex;
   final ValueChanged<int> onTap;
 
@@ -17,9 +16,8 @@ class BottomTabBar extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
 
     return BottomNavigationBar(
-      currentIndex: currentIndex, // Sử dụng biến được truyền vào
-      onTap: onTap,             // Sử dụng hàm callback được truyền vào
-      // Các thuộc tính màu sắc, font chữ sẽ tự động lấy từ AppTheme
+      currentIndex: currentIndex,
+      onTap: onTap,
       items: [
         BottomNavigationBarItem(
           icon: const Icon(Icons.home_outlined),

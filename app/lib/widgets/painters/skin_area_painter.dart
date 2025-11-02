@@ -1,6 +1,5 @@
-// lib/widgets/painters/skin_area_painter.dart
 import 'package:flutter/material.dart';
-import 'dart:math' as math; // Import dart:math ở đây!
+import 'dart:math' as math;
 
 class SkinAreaPainter extends CustomPainter {
   final Color color;

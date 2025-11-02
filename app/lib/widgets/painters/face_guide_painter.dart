@@ -1,4 +1,3 @@
-// lib/widgets/painters/face_guide_painter.dart
 import 'package:flutter/material.dart';
 
 // Đây là class FaceGuidePainter từ file HomeScreen gốc
@@ -11,9 +10,7 @@ class FaceGuidePainter extends CustomPainter {
       ..strokeWidth = 3.0
       ..strokeCap = StrokeCap.round;
 
-    // Oval face
     canvas.drawOval(Rect.fromLTWH(0, 0, size.width, size.height), paint);
-    //chinh sửa kích thước face
 
     // Nose
     final nose = Path()

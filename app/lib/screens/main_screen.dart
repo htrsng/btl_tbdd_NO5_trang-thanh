@@ -14,10 +14,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  // [SỬA LỖI] - Bỏ 'final' để biến này có thể thay đổi
   int _currentIndex = 0;
 
-  // Danh sách các màn hình không đổi
   static const List<Widget> _tabs = [
     HomeScreen(),
     SuggestionsScreen(),
@@ -25,7 +23,6 @@ class _MainScreenState extends State<MainScreen> {
     ProfileScreen(),
   ];
 
-  // Hàm callback để nhận index mới từ BottomTabBar
   void _onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
@@ -36,7 +33,6 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(index: _currentIndex, children: _tabs),
-      // [CẢI TIẾN] - Truyền state và callback xuống cho BottomTabBar
       bottomNavigationBar: BottomTabBar(
         currentIndex: _currentIndex,
         onTap: _onTabTapped,

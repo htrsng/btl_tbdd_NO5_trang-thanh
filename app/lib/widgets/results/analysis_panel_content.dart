@@ -61,8 +61,6 @@ class AnalysisPanelContent extends ConsumerWidget {
     );
   }
 
-  // --- CÁC WIDGET CON ĐƯỢC CẬP NHẬT VÀ THÊM MỚI ---
-
   Widget _buildTopInfoCard(BuildContext context, String scoreText,
       String skinType, AppLocalizations l10n) {
     return Container(
@@ -289,15 +287,14 @@ class AnalysisPanelContent extends ConsumerWidget {
     );
   }
 
-  // [SỬA LỖI] - Thêm xử lý null (??) cho các giá trị từ l10n
   Widget _buildCtaSection(BuildContext context, AppLocalizations l10n) {
     return Column(
       children: [
         _buildCtaCard(
           context: context,
           icon: Icons.smart_toy_outlined,
-          title: l10n.chatWithAI, // Lỗi ở đây
-          subtitle: l10n.chatWithAISubtitle, // Lỗi ở đây
+          title: l10n.chatWithAI,
+          subtitle: l10n.chatWithAISubtitle,
           onTap: () {
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(l10n.featureInProgress)));
@@ -307,8 +304,8 @@ class AnalysisPanelContent extends ConsumerWidget {
         _buildCtaCard(
           context: context,
           icon: Icons.health_and_safety_outlined,
-          title: l10n.connectExpert, // Lỗi ở đây
-          subtitle: l10n.connectExpertSubtitle, // Lỗi ở đây
+          title: l10n.connectExpert,
+          subtitle: l10n.connectExpertSubtitle,
           onTap: () {
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(l10n.featureInProgress)));
@@ -318,7 +315,6 @@ class AnalysisPanelContent extends ConsumerWidget {
     );
   }
 
-  // Widget con cho thẻ CTA
   Widget _buildCtaCard({
     required BuildContext context,
     required IconData icon,
@@ -364,7 +360,6 @@ class AnalysisPanelContent extends ConsumerWidget {
     );
   }
 
-  // [SỬA LỖI] - Thêm xử lý null (??) cho các giá trị từ l10n
   Widget _buildDisclaimerBox(BuildContext context, AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.all(12.0),
@@ -382,12 +377,12 @@ class AnalysisPanelContent extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(l10n.disclaimerTitle, // Lỗi ở đây
+                Text(l10n.disclaimerTitle,
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.orange.shade900)),
                 const SizedBox(height: 4),
-                Text(l10n.disclaimerBody, // Lỗi ở đây
+                Text(l10n.disclaimerBody,
                     style: TextStyle(
                         color: Colors.grey.shade800,
                         fontSize: 13,

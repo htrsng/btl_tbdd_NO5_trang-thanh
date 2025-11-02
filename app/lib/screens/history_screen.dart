@@ -2,17 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
-
 import '../models/skin_analysis_model.dart';
 import '../l10n/app_localizations.dart';
 import '../providers/navigation_provider.dart';
-import '../providers/history_provider.dart'; // Import provider mới
-import 'steps/results_step.dart'; // Import ResultsStep để tái sử dụng
+import '../providers/history_provider.dart';
+import 'steps/results_step.dart';
 
 class HistoryScreen extends ConsumerWidget {
   const HistoryScreen({super.key});
-
-  // Hàm helper để hiển thị dialog xác nhận, giúp tái sử dụng code
   Future<bool> _showConfirmationDialog(
       BuildContext context, AppLocalizations l10n,
       {required String content}) async {
@@ -36,7 +33,7 @@ class HistoryScreen extends ConsumerWidget {
         );
       },
     );
-    return confirmed ?? false; // Trả về false nếu người dùng đóng dialog
+    return confirmed ?? false;
   }
 
   @override
@@ -48,7 +45,6 @@ class HistoryScreen extends ConsumerWidget {
       appBar: AppBar(
         title: Text(l10n.historyTitle),
         actions: [
-          // Nút "Xóa tất cả" chỉ hiện khi có lịch sử
           if (historyList.isNotEmpty)
             IconButton(
               icon: const Icon(Icons.delete_sweep_outlined),
@@ -68,8 +64,6 @@ class HistoryScreen extends ConsumerWidget {
           : _buildHistoryContent(context, historyList, l10n, ref),
     );
   }
-
-  // --- WIDGET CON ĐƯỢC TÁCH RA CHO GỌN GÀNG ---
 
   Widget _buildEmptyState(
       BuildContext context, WidgetRef ref, AppLocalizations l10n) {
@@ -92,7 +86,6 @@ class HistoryScreen extends ConsumerWidget {
               icon: const Icon(Icons.camera_alt_outlined),
               label: Text(l10n.startAnalysisButton),
               onPressed: () {
-                // Chuyển người dùng về tab Trang chủ (index 0)
                 ref.read(mainTabIndexProvider.notifier).state = 0;
               },
             )
@@ -168,7 +161,6 @@ class HistoryScreen extends ConsumerWidget {
                 content: l10n.deleteSingleHistoryConfirmation);
             if (confirmed) {
               final currentList = ref.read(historyProvider);
-              // Lọc ra danh sách mới không chứa item cần xóa
               ref.read(historyProvider.notifier).state = currentList
                   .where((analysis) => analysis.date != item.date)
                   .toList();
@@ -176,7 +168,6 @@ class HistoryScreen extends ConsumerWidget {
           },
         ),
         onTap: () {
-          // Điều hướng đến màn hình chi tiết, tái sử dụng ResultsStep
           Navigator.of(context).push(MaterialPageRoute(
             builder: (_) => HistoryDetailScreen(analysis: item),
           ));
@@ -250,7 +241,6 @@ class HistoryScreen extends ConsumerWidget {
   }
 }
 
-// Màn hình đơn giản để "host" ResultsStep khi xem lại lịch sử
 class HistoryDetailScreen extends ConsumerWidget {
   final SkinAnalysis analysis;
   const HistoryDetailScreen({super.key, required this.analysis});
@@ -260,8 +250,7 @@ class HistoryDetailScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(title: Text(l10n.historyDetailTitle)),
-      body: ResultsStep(
-          analysis: analysis), // Tái sử dụng ResultsStep một cách thông minh
+      body: ResultsStep(analysis: analysis),
     );
   }
 }

@@ -1,6 +1,3 @@
-// lib/data/survey_questions.dart
-// (Đây là dữ liệu 'questions' bạn đã hardcode trong HomeScreen gốc)
-
 const List<Map<String, dynamic>> surveyQuestions = [
   {
     'id': 'q1',

@@ -16,13 +16,12 @@ class UploadStep extends ConsumerStatefulWidget {
 
 class _UploadStepState extends ConsumerState<UploadStep> {
   final ImagePicker _picker = ImagePicker();
-  int _selectedAngleIndex = 1; // Mặc định là ảnh Chính diện
+  int _selectedAngleIndex = 1;
   late final PageController _pageController;
 
   @override
   void initState() {
     super.initState();
-    // Khởi tạo PageController để bắt đầu ở trang giữa (ảnh chính diện)
     _pageController = PageController(initialPage: _selectedAngleIndex);
   }
 
@@ -50,7 +49,7 @@ class _UploadStepState extends ConsumerState<UploadStep> {
             body: Stack(
               fit: StackFit.expand,
               children: [
-                // [CẢI TIẾN] - Lớp 1: Trình xem ảnh có thể lướt
+                //- Lớp 1: Trình xem ảnh có thể lướt
                 _buildImagePageView(images),
 
                 // Lớp 3: Thanh tiêu đề
@@ -66,7 +65,7 @@ class _UploadStepState extends ConsumerState<UploadStep> {
             ),
           ),
         ),
-        // [CẢI TIẾN] - Chỉ giữ lại một khu vực điều khiển duy nhất ở dưới
+        // Chỉ giữ lại một khu vực điều khiển duy nhất ở dưới
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(
@@ -192,7 +191,7 @@ class _UploadStepState extends ConsumerState<UploadStep> {
           IconButton(
             icon: const Icon(Icons.flip_camera_ios_outlined,
                 color: Colors.white, size: 30),
-            onPressed: null, // TODO: Thêm logic chuyển camera
+            onPressed: null,
           ),
         ],
       );
