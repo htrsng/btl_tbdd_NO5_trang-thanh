@@ -34,7 +34,7 @@ class ProfileScreen extends ConsumerWidget {
             child: CircleAvatar(
               radius: 50,
               backgroundImage: NetworkImage(
-                  'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&q=80'),
+                  'assets/images/570732305_1136347038397608_8592694306939627773_n.png'),
             ),
           ),
           const SizedBox(height: 12),
