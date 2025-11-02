@@ -461,7 +461,7 @@ abstract class AppLocalizations {
   /// No description provided for @aboutUsBody.
   ///
   /// In en, this message translates to:
-  /// **'We aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.'**
+  /// **'Project developed by [Your Name/Team Name].\n\nWe aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.'**
   String get aboutUsBody;
 
   /// No description provided for @aboutUsLecturer.

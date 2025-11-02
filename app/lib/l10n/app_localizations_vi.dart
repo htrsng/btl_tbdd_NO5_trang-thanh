@@ -210,7 +210,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get aboutUsBody =>
-      'Chúng tôi mong muốn mang lại một giải pháp tiện lợi để mọi người có thể hiểu rõ hơn về làn da của mình và tìm ra chu trình chăm sóc phù hợp nhất.';
+      'Dự án được phát triển bởi [Tên nhóm/Tên của bạn].\n\nChúng tôi mong muốn mang lại một giải pháp tiện lợi để mọi người có thể hiểu rõ hơn về làn da của mình và tìm ra chu trình chăm sóc phù hợp nhất.';
 
   @override
   String get aboutUsLecturer => 'Giảng viên hướng dẫn: Nguyễn Xuân Quế';
