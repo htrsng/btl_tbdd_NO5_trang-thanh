@@ -1,3 +1,4 @@
+// hiển thị (Điểm số, Loại da, Gợi ý, CTA, Lưu ý,...).
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/skin_analysis_model.dart';
@@ -386,7 +387,6 @@ class AnalysisPanelContent extends ConsumerWidget {
     );
   }
 
-  // [SỬA LỖI] - Thêm xử lý null (??) cho các giá trị từ l10n
   Widget _buildDisclaimerBox(BuildContext context, AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.all(12.0),

@@ -5,7 +5,6 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:typed_data';
 import '../../providers/app_state_provider.dart';
 import '../../providers/analysis_flow_provider.dart';
-import '../../widgets/painters/face_guide_painter.dart';
 import '../../l10n/app_localizations.dart';
 
 class UploadStep extends ConsumerStatefulWidget {
@@ -115,10 +114,6 @@ class _UploadStepState extends ConsumerState<UploadStep> {
       },
     );
   }
-
-  Widget buildFaceGuide() => Center(
-      child:
-          CustomPaint(painter: FaceGuidePainter(), size: const Size(280, 400)));
 
   Widget buildTopBar() {
     final l10n = AppLocalizations.of(context)!;
