@@ -6,7 +6,6 @@ const String _languagePrefKey = 'appLanguageCode';
 
 class LocaleNotifier extends StateNotifier<Locale> {
   LocaleNotifier() : super(const Locale('vi')) {
-    // Mặc định là tiếng Việt
     _loadLocale();
   }
 
@@ -19,7 +18,7 @@ class LocaleNotifier extends StateNotifier<Locale> {
 
   // Đặt và lưu ngôn ngữ mới
   Future<void> setLocale(Locale locale) async {
-    if (state == locale) return; // Không làm gì nếu ngôn ngữ không đổi
+    if (state == locale) return;
 
     state = locale;
     final prefs = await SharedPreferences.getInstance();

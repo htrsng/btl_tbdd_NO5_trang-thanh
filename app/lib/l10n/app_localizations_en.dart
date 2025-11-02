@@ -206,6 +206,25 @@ class AppLocalizationsEn extends AppLocalizations {
       'Sleep gives your skin time to recover and regenerate cells.';
 
   @override
+  String get appName => 'SkinAI App';
+
+  @override
+  String get aboutUsBody =>
+      'We aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.';
+
+  @override
+  String get aboutUsLecturer => 'Instructor: Nguyen Xuan Que';
+
+  @override
+  String get aboutUsStudent1 => 'Nguyen Thi Huyen Trang - 23010181';
+
+  @override
+  String get aboutUsStudent2 => 'Tran Xuan Thanh - 23010160';
+
+  @override
+  String get detailedAnalysis => 'Detailed Analysis';
+
+  @override
   String get chatWithAI => 'Chat with SkinAI';
 
   @override
@@ -227,5 +246,31 @@ class AppLocalizationsEn extends AppLocalizations {
       'SkinAI provides suggestions for reference only. Analysis results may not be 100% accurate. Please consult a dermatologist or medical professional for professional medical advice.';
 
   @override
-  String get detailedAnalysis => 'Detailed Analysis';
+  String get viewMore => 'View More';
+
+  @override
+  String get chatWithAITitle => 'Chat with SkinAI';
+
+  @override
+  String get chatInitialMessage =>
+      'Hello, I\'m SkinAI. What questions do you have about your analysis results?';
+
+  @override
+  String get chatPlaceholder => 'Type your question...';
+
+  @override
+  String get expertBookingTitle => 'Connect with Expert';
+
+  @override
+  String get expertName => 'Dr. John Doe';
+
+  @override
+  String get expertSpecialty => 'Dermatologist - 10 years experience';
+
+  @override
+  String get expertBio =>
+      'Dr. Doe is a leading expert in acne treatment and skin recovery. Book your 1-on-1 consultation today.';
+
+  @override
+  String get bookAppointmentButton => 'Book Consultation';
 }

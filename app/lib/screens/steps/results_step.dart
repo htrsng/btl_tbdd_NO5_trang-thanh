@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:typed_data';
-
 import '../../l10n/app_localizations.dart';
 import '../../models/skin_analysis_model.dart';
 import '../../providers/app_state_provider.dart';
 import '../../providers/analysis_flow_provider.dart';
 import '../../widgets/results/analysis_panel_content.dart';
 
-// [CẢI TIẾN] - Chuyển sang ConsumerStatefulWidget để quản lý trạng thái của PageView
 class ResultsStep extends ConsumerStatefulWidget {
   final SkinAnalysis analysis;
   const ResultsStep({super.key, required this.analysis});
@@ -34,7 +32,7 @@ class _ResultsStepState extends ConsumerState<ResultsStep> {
     super.dispose();
   }
 
-  // [CẢI TIẾN #2] - Hàm helper giờ đây sử dụng đa ngôn ngữ
+  //  - Hàm helper giờ đây sử dụng đa ngôn ngữ
   String _getScoreComment(double score, AppLocalizations l10n) {
     String formattedScore = score.toStringAsFixed(1);
     if (score >= 9.0) return l10n.scoreCommentExcellent(formattedScore);
@@ -53,7 +51,7 @@ class _ResultsStepState extends ConsumerState<ResultsStep> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // [CẢI TIẾN #1] - Lớp 1: Trình xem ảnh có thể lướt (PageView)
+          //  - Lớp 1: Trình xem ảnh có thể lướt (PageView)
           _buildImagePageView(images),
 
           // Lớp 2: Các thành phần UI phía trên
@@ -71,9 +69,9 @@ class _ResultsStepState extends ConsumerState<ResultsStep> {
                   onPressed: () =>
                       ref.read(appStateProvider.notifier).setStep(2),
                 ),
-                // [CẢI TIẾN #3] - Chỉ báo trang
+                //  - Chỉ báo trang
                 _buildPageIndicator(images.length),
-                // [CẢI TIẾN #3] - Nút Đóng
+                //  - Nút Đóng
                 IconButton(
                   icon: const Icon(Icons.close, color: Colors.white, size: 30),
                   onPressed: () {
@@ -162,7 +160,6 @@ class _ResultsStepState extends ConsumerState<ResultsStep> {
         ),
         child: SingleChildScrollView(
           controller: scrollController,
-          // Truy cập analysis qua 'widget.analysis' vì đây là StatefulWidget
           child: AnalysisPanelContent(analysis: widget.analysis),
         ),
       ),

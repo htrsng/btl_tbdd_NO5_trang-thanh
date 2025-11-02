@@ -452,6 +452,42 @@ abstract class AppLocalizations {
   /// **'Sleep gives your skin time to recover and regenerate cells.'**
   String get lifestyleTip3Subtitle;
 
+  /// No description provided for @appName.
+  ///
+  /// In en, this message translates to:
+  /// **'SkinAI App'**
+  String get appName;
+
+  /// No description provided for @aboutUsBody.
+  ///
+  /// In en, this message translates to:
+  /// **'We aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.'**
+  String get aboutUsBody;
+
+  /// No description provided for @aboutUsLecturer.
+  ///
+  /// In en, this message translates to:
+  /// **'Instructor: Nguyen Xuan Que'**
+  String get aboutUsLecturer;
+
+  /// No description provided for @aboutUsStudent1.
+  ///
+  /// In en, this message translates to:
+  /// **'Nguyen Thi Huyen Trang - 23010181'**
+  String get aboutUsStudent1;
+
+  /// No description provided for @aboutUsStudent2.
+  ///
+  /// In en, this message translates to:
+  /// **'Tran Xuan Thanh - 23010160'**
+  String get aboutUsStudent2;
+
+  /// No description provided for @detailedAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Detailed Analysis'**
+  String get detailedAnalysis;
+
   /// No description provided for @chatWithAI.
   ///
   /// In en, this message translates to:
@@ -488,11 +524,59 @@ abstract class AppLocalizations {
   /// **'SkinAI provides suggestions for reference only. Analysis results may not be 100% accurate. Please consult a dermatologist or medical professional for professional medical advice.'**
   String get disclaimerBody;
 
-  /// No description provided for @detailedAnalysis.
+  /// No description provided for @viewMore.
   ///
   /// In en, this message translates to:
-  /// **'Detailed Analysis'**
-  String get detailedAnalysis;
+  /// **'View More'**
+  String get viewMore;
+
+  /// No description provided for @chatWithAITitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat with SkinAI'**
+  String get chatWithAITitle;
+
+  /// No description provided for @chatInitialMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Hello, I\'m SkinAI. What questions do you have about your analysis results?'**
+  String get chatInitialMessage;
+
+  /// No description provided for @chatPlaceholder.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your question...'**
+  String get chatPlaceholder;
+
+  /// No description provided for @expertBookingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect with Expert'**
+  String get expertBookingTitle;
+
+  /// No description provided for @expertName.
+  ///
+  /// In en, this message translates to:
+  /// **'Dr. John Doe'**
+  String get expertName;
+
+  /// No description provided for @expertSpecialty.
+  ///
+  /// In en, this message translates to:
+  /// **'Dermatologist - 10 years experience'**
+  String get expertSpecialty;
+
+  /// No description provided for @expertBio.
+  ///
+  /// In en, this message translates to:
+  /// **'Dr. Doe is a leading expert in acne treatment and skin recovery. Book your 1-on-1 consultation today.'**
+  String get expertBio;
+
+  /// No description provided for @bookAppointmentButton.
+  ///
+  /// In en, this message translates to:
+  /// **'Book Consultation'**
+  String get bookAppointmentButton;
 }
 
 class _AppLocalizationsDelegate

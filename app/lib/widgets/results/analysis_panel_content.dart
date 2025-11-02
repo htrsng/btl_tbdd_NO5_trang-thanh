@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/skin_analysis_model.dart';
 import '../../providers/navigation_provider.dart';
 import '../../l10n/app_localizations.dart';
+import '../../screens/fake_chat_screen.dart';
+import '../../screens/fake_expert_screen.dart';
 
 class AnalysisPanelContent extends ConsumerWidget {
   final SkinAnalysis analysis;
@@ -296,8 +298,9 @@ class AnalysisPanelContent extends ConsumerWidget {
           title: l10n.chatWithAI,
           subtitle: l10n.chatWithAISubtitle,
           onTap: () {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(l10n.featureInProgress)));
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (ctx) => const FakeChatScreen()),
+            );
           },
         ),
         const SizedBox(height: 12),
@@ -307,8 +310,9 @@ class AnalysisPanelContent extends ConsumerWidget {
           title: l10n.connectExpert,
           subtitle: l10n.connectExpertSubtitle,
           onTap: () {
-            ScaffoldMessenger.of(context)
-                .showSnackBar(SnackBar(content: Text(l10n.featureInProgress)));
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (ctx) => const FakeExpertScreen()),
+            );
           },
         ),
       ],

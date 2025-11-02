@@ -160,13 +160,10 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
         scores['nhạy cảm'] = (scores['nhạy cảm'] ?? 0) + 4;
       }
 
-      // Logic đặc biệt cho các câu trả lời hỗn hợp
       if (key == 'q1' || key == 'q2' || key == 'q4') {
         if (answer.contains('vùng chữ T') && answer.contains('má')) {
-          scores['dầu'] =
-              (scores['dầu'] ?? 0) + 2; // Tăng nhẹ điểm dầu cho da hỗn hợp
-          scores['khô'] =
-              (scores['khô'] ?? 0) + 1; // Tăng nhẹ điểm khô cho da hỗn hợp
+          scores['dầu'] = (scores['dầu'] ?? 0) + 2;
+          scores['khô'] = (scores['khô'] ?? 0) + 1;
         }
       }
     });
@@ -174,8 +171,6 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
     // 3. Tổng hợp kết quả thành một chuỗi mô tả
     List<String> descriptions = [];
     String primaryType;
-
-    // Xác định loại da chính dựa trên điểm số cao nhất
     if ((scores['dầu'] ?? 0) > (scores['khô'] ?? 0) + 2) {
       primaryType = 'Da Dầu';
     } else if ((scores['khô'] ?? 0) > (scores['dầu'] ?? 0) + 2) {
@@ -183,7 +178,6 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
     } else if ((scores['dầu'] ?? 0) > 0 || (scores['khô'] ?? 0) > 0) {
       primaryType = 'Da Hỗn Hợp';
     } else {
-      // Nếu không có dấu hiệu dầu hay khô rõ rệt, kiểm tra độ nhạy cảm
       if ((scores['nhạy cảm'] ?? 0) >= 5) {
         primaryType = 'Da Nhạy Cảm';
       } else {
@@ -191,13 +185,9 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
       }
     }
     descriptions.add(primaryType);
-
-    // Thêm các đặc tính phụ nếu điểm số đủ cao và chưa được mô tả
     if ((scores['nhạy cảm'] ?? 0) >= 5 && primaryType != 'Da Nhạy Cảm') {
       descriptions.add('thiên nhạy cảm');
     }
-
-    // Nối các mô tả lại với nhau, ví dụ: "Da Dầu, thiên nhạy cảm"
     return descriptions.join(', ');
   }
 }

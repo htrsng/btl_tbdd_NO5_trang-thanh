@@ -15,5 +15,17 @@ final historyProvider = StateProvider<List<SkinAnalysis>>((ref) {
         skinScore: 8.5,
         skinType: 'Da thường',
         date: DateTime.now().subtract(const Duration(days: 7))),
+    SkinAnalysis.empty().copyWith(
+        skinScore: 8.5,
+        skinType: 'Da thường',
+        date: DateTime.now().subtract(const Duration(days: 12))),
+    SkinAnalysis.empty().copyWith(
+        skinScore: 8.5,
+        skinType: 'Da thường',
+        date: DateTime.now().subtract(const Duration(days: 15))),
+    SkinAnalysis.empty().copyWith(
+        skinScore: 8.5,
+        skinType: 'Da thường',
+        date: DateTime.now().subtract(const Duration(days: 23))),
   ];
 });

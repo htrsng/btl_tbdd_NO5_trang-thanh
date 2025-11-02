@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// [CẢI TIẾN #3] - Dùng const để quản lý "magic strings"
+// - Dùng const để quản lý "magic strings"
 const String _themePrefKey = 'appThemeMode';
 
-// [CẢI TIẾN #1] - Tạo một provider riêng chỉ để cung cấp SharedPreferences
+//- Tạo một provider riêng chỉ để cung cấp SharedPreferences
 // Điều này giúp tách biệt logic khởi tạo khỏi logic nghiệp vụ.
 final sharedPreferencesProvider = FutureProvider<SharedPreferences>((ref) {
   return SharedPreferences.getInstance();
@@ -25,7 +25,7 @@ final themeProvider = StateNotifierProvider<ThemeNotifier, ThemeMode>((ref) {
 });
 
 class ThemeNotifier extends StateNotifier<ThemeMode> {
-  // [CẢI TIẾN #1] - Nhận SharedPreferences từ bên ngoài thay vì tự tạo
+  //- Nhận SharedPreferences từ bên ngoài thay vì tự tạo
   final SharedPreferences? _prefs;
 
   ThemeNotifier(this._prefs) : super(ThemeMode.light) {
@@ -40,12 +40,13 @@ class ThemeNotifier extends StateNotifier<ThemeMode> {
 
   Future<void> setTheme(ThemeMode themeMode) async {
     if (_prefs == null || state == themeMode) return;
-    
+
     state = themeMode;
-    await _prefs!.setString(_themePrefKey, themeMode == ThemeMode.dark ? 'dark' : 'light');
+    await _prefs!.setString(
+        _themePrefKey, themeMode == ThemeMode.dark ? 'dark' : 'light');
   }
 
-  // [CẢI TIẾN #2] - Thêm hàm toggle tiện lợi
+  // - Thêm hàm toggle tiện lợi
   Future<void> toggleTheme() async {
     final newTheme = state == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
     await setTheme(newTheme);

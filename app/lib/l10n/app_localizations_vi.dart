@@ -206,6 +206,25 @@ class AppLocalizationsVi extends AppLocalizations {
       'Giấc ngủ giúp da có thời gian phục hồi và tái tạo tế bào.';
 
   @override
+  String get appName => 'Ứng dụng SkinAI';
+
+  @override
+  String get aboutUsBody =>
+      'Chúng tôi mong muốn mang lại một giải pháp tiện lợi để mọi người có thể hiểu rõ hơn về làn da của mình và tìm ra chu trình chăm sóc phù hợp nhất.';
+
+  @override
+  String get aboutUsLecturer => 'Giảng viên hướng dẫn: Nguyễn Xuân Quế';
+
+  @override
+  String get aboutUsStudent1 => 'Nguyễn Thị Huyền Trang - 23010181';
+
+  @override
+  String get aboutUsStudent2 => 'Trần Xuân Thành - 23010160';
+
+  @override
+  String get detailedAnalysis => 'Phân tích chi tiết';
+
+  @override
   String get chatWithAI => 'Chat với SkinAI';
 
   @override
@@ -226,5 +245,31 @@ class AppLocalizationsVi extends AppLocalizations {
       'SkinAI chỉ cung cấp các gợi ý mang tính tham khảo. Kết quả phân tích có thể không chính xác 100%. Vui lòng đến gặp bác sĩ hoặc chuyên gia da liễu để được tư vấn y tế chuyên nghiệp.';
 
   @override
-  String get detailedAnalysis => 'Phân tích chi tiết';
+  String get viewMore => 'Xem thêm';
+
+  @override
+  String get chatWithAITitle => 'Trò chuyện với SkinAI';
+
+  @override
+  String get chatInitialMessage =>
+      'Chào bạn, tôi là SkinAI. Bạn có câu hỏi gì về kết quả phân tích của mình không?';
+
+  @override
+  String get chatPlaceholder => 'Nhập câu hỏi của bạn...';
+
+  @override
+  String get expertBookingTitle => 'Kết nối Chuyên gia';
+
+  @override
+  String get expertName => 'BS. Nguyễn Văn A';
+
+  @override
+  String get expertSpecialty => 'Chuyên khoa Da liễu - 10 năm kinh nghiệm';
+
+  @override
+  String get expertBio =>
+      'Bác sĩ A là chuyên gia hàng đầu về điều trị mụn và phục hồi da. Đặt lịch tư vấn 1:1 ngay hôm nay.';
+
+  @override
+  String get bookAppointmentButton => 'Đặt lịch tư vấn';
 }
