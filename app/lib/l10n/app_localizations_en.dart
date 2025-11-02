@@ -131,27 +131,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logout => 'Logout';
 
   @override
-  String scoreCommentExcellent(Object score) {
+  String scoreCommentExcellent(String score) {
     return 'Excellent! Your skin is nearly perfect ($score/10)';
   }
 
   @override
-  String scoreCommentVeryGood(Object score) {
+  String scoreCommentVeryGood(String score) {
     return 'Very Good! Your skin is in a healthy state ($score/10)';
   }
 
   @override
-  String scoreCommentGood(Object score) {
+  String scoreCommentGood(String score) {
     return 'Good! A few minor points to note ($score/10)';
   }
 
   @override
-  String scoreCommentAverage(Object score) {
+  String scoreCommentAverage(String score) {
     return 'Average. Your skin needs more care ($score/10)';
   }
 
   @override
-  String scoreCommentNeedsImprovement(Object score) {
+  String scoreCommentNeedsImprovement(String score) {
     return 'Needs Improvement! Please review the suggestions below ($score/10)';
   }
 
@@ -210,7 +210,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aboutUsBody =>
-      'Project developed by [Your Name/Team Name].\n\nWe aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.';
+      'We aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.';
 
   @override
   String get aboutUsLecturer => 'Instructor: Nguyen Xuan Que';
@@ -287,7 +287,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get welcomeBack => 'Welcome back!';
 
   @override
-  String lastSkinScore(Object date, Object score) {
+  String lastSkinScore(String score, String date) {
     return 'Your last skin score was $score (on $date)';
   }
 

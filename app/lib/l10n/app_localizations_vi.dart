@@ -131,27 +131,27 @@ class AppLocalizationsVi extends AppLocalizations {
   String get logout => 'Đăng xuất';
 
   @override
-  String scoreCommentExcellent(Object score) {
+  String scoreCommentExcellent(String score) {
     return 'Tuyệt vời! Làn da của bạn gần như hoàn hảo ($score/10)';
   }
 
   @override
-  String scoreCommentVeryGood(Object score) {
+  String scoreCommentVeryGood(String score) {
     return 'Rất tốt! Da của bạn đang ở trạng thái khỏe mạnh ($score/10)';
   }
 
   @override
-  String scoreCommentGood(Object score) {
+  String scoreCommentGood(String score) {
     return 'Khá ổn! Cần chú ý một vài điểm nhỏ ($score/10)';
   }
 
   @override
-  String scoreCommentAverage(Object score) {
+  String scoreCommentAverage(String score) {
     return 'Bình thường. Da bạn cần được chăm sóc kỹ hơn ($score/10)';
   }
 
   @override
-  String scoreCommentNeedsImprovement(Object score) {
+  String scoreCommentNeedsImprovement(String score) {
     return 'Cần cải thiện! Hãy xem kỹ các đề xuất bên dưới ($score/10)';
   }
 
@@ -210,7 +210,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get aboutUsBody =>
-      'Dự án được phát triển bởi [Tên nhóm/Tên của bạn].\n\nChúng tôi mong muốn mang lại một giải pháp tiện lợi để mọi người có thể hiểu rõ hơn về làn da của mình và tìm ra chu trình chăm sóc phù hợp nhất.';
+      'Chúng tôi mong muốn mang lại một giải pháp tiện lợi để mọi người có thể hiểu rõ hơn về làn da của mình và tìm ra chu trình chăm sóc phù hợp nhất.';
 
   @override
   String get aboutUsLecturer => 'Giảng viên hướng dẫn: Nguyễn Xuân Quế';
@@ -286,7 +286,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get welcomeBack => 'Chào mừng trở lại!';
 
   @override
-  String lastSkinScore(Object date, Object score) {
+  String lastSkinScore(String score, String date) {
     return 'Điểm số da gần nhất của bạn là $score (vào ngày $date)';
   }
 

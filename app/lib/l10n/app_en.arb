@@ -40,10 +40,45 @@
   "aboutUs": "About Us",
   "logout": "Logout",
   "scoreCommentExcellent": "Excellent! Your skin is nearly perfect ({score}/10)",
+  "@scoreCommentExcellent": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
   "scoreCommentVeryGood": "Very Good! Your skin is in a healthy state ({score}/10)",
+  "@scoreCommentVeryGood": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
   "scoreCommentGood": "Good! A few minor points to note ({score}/10)",
+  "@scoreCommentGood": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
   "scoreCommentAverage": "Average. Your skin needs more care ({score}/10)",
+  "@scoreCommentAverage": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
   "scoreCommentNeedsImprovement": "Needs Improvement! Please review the suggestions below ({score}/10)",
+  "@scoreCommentNeedsImprovement": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
   "deleteHistoryTitle": "Delete History",
   "deleteAllHistoryConfirmation": "Are you sure you want to delete all analysis history? This action cannot be undone.",
   "deleteSingleHistoryConfirmation": "Are you sure you want to delete this item?",
@@ -60,7 +95,7 @@
   "lifestyleTip3Title": "Get Enough Sleep",
   "lifestyleTip3Subtitle": "Sleep gives your skin time to recover and regenerate cells.",
   "appName": "SkinAI App",
-  "aboutUsBody": "Project developed by [Your Name/Team Name].\n\nWe aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.",
+  "aboutUsBody": "We aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.",
   "aboutUsLecturer": "Instructor: Nguyen Xuan Que",
   "aboutUsStudent1": "Nguyen Thi Huyen Trang - 23010181",
   "aboutUsStudent2": "Tran Xuan Thanh - 23010160",
@@ -85,6 +120,16 @@
   "resultsTitle": "Your Results",
   "welcomeBack": "Welcome back!",
   "lastSkinScore": "Your last skin score was {score} (on {date})",
+  "@lastSkinScore": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "startNewAnalysis": "Start New Analysis",
   "suggestionsReady": "Your Suggestions Are Ready",
   "suggestionsTeaser": "See products, habits, and lifestyle tips personally designed for you by our AI.",

@@ -336,31 +336,31 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Excellent! Your skin is nearly perfect ({score}/10)'**
-  String scoreCommentExcellent(Object score);
+  String scoreCommentExcellent(String score);
 
   /// No description provided for @scoreCommentVeryGood.
   ///
   /// In en, this message translates to:
   /// **'Very Good! Your skin is in a healthy state ({score}/10)'**
-  String scoreCommentVeryGood(Object score);
+  String scoreCommentVeryGood(String score);
 
   /// No description provided for @scoreCommentGood.
   ///
   /// In en, this message translates to:
   /// **'Good! A few minor points to note ({score}/10)'**
-  String scoreCommentGood(Object score);
+  String scoreCommentGood(String score);
 
   /// No description provided for @scoreCommentAverage.
   ///
   /// In en, this message translates to:
   /// **'Average. Your skin needs more care ({score}/10)'**
-  String scoreCommentAverage(Object score);
+  String scoreCommentAverage(String score);
 
   /// No description provided for @scoreCommentNeedsImprovement.
   ///
   /// In en, this message translates to:
   /// **'Needs Improvement! Please review the suggestions below ({score}/10)'**
-  String scoreCommentNeedsImprovement(Object score);
+  String scoreCommentNeedsImprovement(String score);
 
   /// No description provided for @deleteHistoryTitle.
   ///
@@ -461,7 +461,7 @@ abstract class AppLocalizations {
   /// No description provided for @aboutUsBody.
   ///
   /// In en, this message translates to:
-  /// **'Project developed by [Your Name/Team Name].\n\nWe aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.'**
+  /// **'We aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.'**
   String get aboutUsBody;
 
   /// No description provided for @aboutUsLecturer.
@@ -606,7 +606,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Your last skin score was {score} (on {date})'**
-  String lastSkinScore(Object date, Object score);
+  String lastSkinScore(String score, String date);
 
   /// No description provided for @startNewAnalysis.
   ///

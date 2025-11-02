@@ -40,10 +40,45 @@
   "aboutUs": "Về chúng tôi",
   "logout": "Đăng xuất",
   "scoreCommentExcellent": "Tuyệt vời! Làn da của bạn gần như hoàn hảo ({score}/10)",
+  "@scoreCommentExcellent": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
   "scoreCommentVeryGood": "Rất tốt! Da của bạn đang ở trạng thái khỏe mạnh ({score}/10)",
+  "@scoreCommentVeryGood": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
   "scoreCommentGood": "Khá ổn! Cần chú ý một vài điểm nhỏ ({score}/10)",
+  "@scoreCommentGood": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
   "scoreCommentAverage": "Bình thường. Da bạn cần được chăm sóc kỹ hơn ({score}/10)",
+  "@scoreCommentAverage": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
   "scoreCommentNeedsImprovement": "Cần cải thiện! Hãy xem kỹ các đề xuất bên dưới ({score}/10)",
+  "@scoreCommentNeedsImprovement": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
   "deleteHistoryTitle": "Xóa Lịch sử",
   "deleteAllHistoryConfirmation": "Bạn có chắc chắn muốn xóa toàn bộ lịch sử phân tích không? Hành động này không thể hoàn tác.",
   "deleteSingleHistoryConfirmation": "Bạn có chắc chắn muốn xóa mục này không?",
@@ -60,7 +95,7 @@
   "lifestyleTip3Title": "Ngủ Đủ Giấc",
   "lifestyleTip3Subtitle": "Giấc ngủ giúp da có thời gian phục hồi và tái tạo tế bào.",
   "appName": "Ứng dụng SkinAI",
-  "aboutUsBody": "Dự án được phát triển bởi [Tên nhóm/Tên của bạn].\n\nChúng tôi mong muốn mang lại một giải pháp tiện lợi để mọi người có thể hiểu rõ hơn về làn da của mình và tìm ra chu trình chăm sóc phù hợp nhất.",
+  "aboutUsBody": "Chúng tôi mong muốn mang lại một giải pháp tiện lợi để mọi người có thể hiểu rõ hơn về làn da của mình và tìm ra chu trình chăm sóc phù hợp nhất.",
   "aboutUsLecturer": "Giảng viên hướng dẫn: Nguyễn Xuân Quế",
   "aboutUsStudent1": "Nguyễn Thị Huyền Trang - 23010181",
   "aboutUsStudent2": "Trần Xuân Thành - 23010160",
@@ -85,6 +120,16 @@
   "resultsTitle": "Kết quả của bạn",
   "welcomeBack": "Chào mừng trở lại!",
   "lastSkinScore": "Điểm số da gần nhất của bạn là {score} (vào ngày {date})",
+  "@lastSkinScore": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      },
+      "date": {
+        "type": "String"
+      }
+    }
+  },
   "startNewAnalysis": "Bắt đầu phân tích mới",
   "suggestionsReady": "Gợi ý của bạn đã sẵn sàng",
   "suggestionsTeaser": "Xem các sản phẩm, thói quen và mẹo lối sống được AI thiết kế riêng cho bạn.",
