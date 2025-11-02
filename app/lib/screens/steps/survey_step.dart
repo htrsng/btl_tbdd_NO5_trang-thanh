@@ -1,3 +1,4 @@
+// Giao diện khảo sát theo từng câu hỏi.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/analysis_flow_provider.dart';

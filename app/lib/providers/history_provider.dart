@@ -1,3 +1,4 @@
+// Cung cấp danh sách (dữ liệu giả) các lần phân tích cũ cho màn hình Lịch sử.
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/skin_analysis_model.dart';
 

@@ -1,3 +1,4 @@
+// Màn hình giới thiệu lướt trang (PageView) với animation Lottie.
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

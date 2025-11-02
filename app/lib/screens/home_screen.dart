@@ -1,3 +1,6 @@
+/*Màn hình "thông minh". Nó quyết định sẽ hiển thị IntroStep (nếu người dùng mới) 
+hay Dashboard (nếu người dùng cũ). Nó cũng là "vỏ bọc" chứa toàn bộ luồng phân tích 4 bước.*/
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -7,8 +10,6 @@ import '../providers/analysis_flow_provider.dart';
 import '../providers/history_provider.dart';
 import '../providers/navigation_provider.dart';
 import '../l10n/app_localizations.dart';
-
-// Import các widget bước
 import 'steps/intro_step.dart';
 import 'steps/upload_step.dart';
 import 'steps/survey_step.dart';

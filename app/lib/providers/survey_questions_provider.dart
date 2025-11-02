@@ -1,3 +1,4 @@
+// Đọc dữ liệu từ data/survey_questions.dart và "cung cấp" (serve) cho giao diện SurveyStep.
 // lib/providers/survey_questions_provider.dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/survey_questions.dart'; // Import file dữ liệu vừa tạo

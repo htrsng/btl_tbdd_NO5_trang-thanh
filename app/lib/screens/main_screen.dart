@@ -1,13 +1,15 @@
+/* "Bộ khung" chính của ứng dụng. Nó chứa BottomNavigationBar 
+(thanh 4 tab dưới cùng) và IndexedStack để hiển thị màn hình tương ứng.*/
+
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart'; // 1. Thêm import
-import '../providers/navigation_provider.dart'; // 2. Import "bộ điều khiển"
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../providers/navigation_provider.dart';
 import 'home_screen.dart';
 import 'suggestions_screen.dart';
 import 'history_screen.dart';
 import 'profile_screen.dart';
 import '../widgets/bottom_tab_bar.dart';
 
-// [CẢI TIẾN] - Chuyển sang ConsumerStatefulWidget
 class MainScreen extends ConsumerStatefulWidget {
   const MainScreen({super.key});
 

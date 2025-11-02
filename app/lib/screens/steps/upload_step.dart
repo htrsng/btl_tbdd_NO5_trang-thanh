@@ -1,3 +1,4 @@
+// Giao diện tải ảnh tùy chỉnh (ảnh nền PageView lướt được và bảng điều khiển thumbnail).
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
