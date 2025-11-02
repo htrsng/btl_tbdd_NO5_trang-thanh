@@ -204,4 +204,27 @@ class AppLocalizationsVi extends AppLocalizations {
   @override
   String get lifestyleTip3Subtitle =>
       'Giấc ngủ giúp da có thời gian phục hồi và tái tạo tế bào.';
+
+  @override
+  String get chatWithAI => 'Chat với SkinAI';
+
+  @override
+  String get chatWithAISubtitle =>
+      'Trò chuyện với AI để hiểu nhanh về các vấn đề da.';
+
+  @override
+  String get connectExpert => 'Kết nối chuyên gia';
+
+  @override
+  String get connectExpertSubtitle => 'Đặt lịch tư vấn 1:1 với bác sĩ da liễu.';
+
+  @override
+  String get disclaimerTitle => 'Lưu ý quan trọng';
+
+  @override
+  String get disclaimerBody =>
+      'SkinAI chỉ cung cấp các gợi ý mang tính tham khảo. Kết quả phân tích có thể không chính xác 100%. Vui lòng đến gặp bác sĩ hoặc chuyên gia da liễu để được tư vấn y tế chuyên nghiệp.';
+
+  @override
+  String get detailedAnalysis => 'Phân tích chi tiết';
 }

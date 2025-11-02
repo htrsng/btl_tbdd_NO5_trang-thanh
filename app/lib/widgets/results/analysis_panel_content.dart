@@ -2,14 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../models/skin_analysis_model.dart';
 import '../../providers/navigation_provider.dart';
+import '../../l10n/app_localizations.dart';
 
 class AnalysisPanelContent extends ConsumerWidget {
   final SkinAnalysis analysis;
 
   const AnalysisPanelContent({required this.analysis, super.key});
 
+  // Hàm helper để lấy điểm số dạng số (int) một cách an toàn
+  int _getScoreValue(String key) {
+    switch (key) {
+      case 'acne':
+        return analysis.analysis.acne;
+      case 'pores':
+        return analysis.analysis.pores;
+      case 'pigmentation':
+        return analysis.analysis.pigmentation;
+      case 'wrinkles':
+        return analysis.analysis.wrinkles;
+      case 'texture':
+        return analysis.analysis.texture;
+      case 'redness':
+        return analysis.analysis.redness;
+      default:
+        return 0;
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final scoreText = analysis.skinScore.toStringAsFixed(1);
     final skinType =
         analysis.skinType.isNotEmpty ? analysis.skinType : 'Chưa xác định';
@@ -33,35 +55,38 @@ class AnalysisPanelContent extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              //1.The thong tin chung (diem và loai da)
-              _buildTopInfoCard(context, scoreText, skinType),
+              // 1. Thẻ thông tin chung (Điểm và Loại da)
+              _buildTopInfoCard(context, scoreText, skinType, l10n),
               const SizedBox(height: 24),
 
-              // 2. phan goi y cai thien
-              _buildImprovementTeaser(context),
+              // 2. Phần gợi ý cải thiện
+              _buildImprovementTeaser(context, l10n),
               const SizedBox(height: 24),
 
-              // 3. phan goi y san pham nho
-              _buildProductTeaser(context, ref),
+              // 3. Phần gợi ý sản phẩm nhỏ
+              _buildProductTeaser(context, ref, l10n),
               const SizedBox(height: 24),
+
               const Divider(height: 24),
+
               const Text(
-                "Phân tích chi tiết",
+                "Phân tích chi tiết", // TODO: Thêm vào l10n nếu muốn
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 18),
-              // 4. luoi diem so chi  tiet
+
+              // 4. Lưới điểm số chi tiết
               _buildGridInfoCards(context),
               const SizedBox(height: 24),
+
               // 5. Các mục Kêu gọi hành động (CTA)
               _buildCtaSection(context, l10n),
               const SizedBox(height: 24),
 
-              // 6.Lưu ý quan trọng
+              // 6. Lưu ý quan trọng
               _buildDisclaimerBox(context, l10n),
               const SizedBox(height: 24), // Thêm khoảng đệm ở dưới cùng
-
             ],
           ),
         ),
@@ -69,10 +94,11 @@ class AnalysisPanelContent extends ConsumerWidget {
     );
   }
 
-  // --- WIDGET CON ĐÃ ĐƯỢC CẬP NHẬT ---
+  // --- CÁC WIDGET CON ĐÃ ĐƯỢC CẬP NHẬT ---
 
-  Widget _buildTopInfoCard(
-      BuildContext context, String scoreText, String skinType) {
+  // 1. Thẻ thông tin chung
+  Widget _buildTopInfoCard(BuildContext context, String scoreText,
+      String skinType, AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 8.0),
       decoration: BoxDecoration(
@@ -83,68 +109,53 @@ class AnalysisPanelContent extends ConsumerWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            // Cột Điểm trung bình
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Điểm số da",
-                    style: TextStyle(
-                        color: Colors.grey.shade700,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500),
-                  ),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                  Text(l10n.skinScore,
+                      style: TextStyle(
+                          color: Colors.grey.shade700,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500)),
+                  const SizedBox(height: 8),
+                  Text(scoreText,
+                      style: const TextStyle(
+                          fontSize: 34,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87)),
+                ])),
+            const VerticalDivider(
+                width: 1, thickness: 1, indent: 10, endIndent: 10),
+            Expanded(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                  Text(l10n.skinType,
+                      style: TextStyle(
+                          color: Colors.grey.shade700,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500)),
                   const SizedBox(height: 8),
                   Text(
-                    scoreText,
+                    skinType,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                     style: const TextStyle(
-                        fontSize: 34,
+                        fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: Colors.black87),
                   ),
-                ],
-              ),
-            ),
-            const VerticalDivider(
-                width: 1, thickness: 1, indent: 10, endIndent: 10),
-            // Cột Loại da
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Loại da của bạn",
-                    style: TextStyle(
-                        color: Colors.grey.shade700,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(height: 8),
-
-                  // [SỬA LỖI] - Hiển thị toàn bộ chuỗi skinType
-                  Text(
-                    skinType, // <-- Đã xóa .split(' ')[0]
-                    textAlign: TextAlign.center,
-                    maxLines: 2, // Cho phép hiển thị tối đa 2 dòng
-                    overflow: TextOverflow.ellipsis, // Thêm dấu ... nếu quá dài
-                    style: const TextStyle(
-                      fontSize: 18, // Điều chỉnh font size cho phù hợp
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                ])),
           ],
         ),
       ),
     );
   }
 
-  // Các hàm còn lại giữ nguyên như cũ...
-  Widget _buildImprovementTeaser(BuildContext context) {
+  // 2. Gợi ý Cải thiện
+  Widget _buildImprovementTeaser(BuildContext context, AppLocalizations l10n) {
     final improvementTips =
         analysis.improvements.values.expand((tips) => tips).take(2).toList();
     if (improvementTips.isEmpty) return const SizedBox.shrink();
@@ -152,8 +163,8 @@ class AnalysisPanelContent extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text("Phương pháp cải thiện",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        Text(l10n.habitsTab,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         ...improvementTips.map((tip) => ListTile(
               leading: Icon(Icons.check_circle_outline,
@@ -166,7 +177,9 @@ class AnalysisPanelContent extends ConsumerWidget {
     );
   }
 
-  Widget _buildProductTeaser(BuildContext context, WidgetRef ref) {
+  // 3. Gợi ý Sản phẩm
+  Widget _buildProductTeaser(
+      BuildContext context, WidgetRef ref, AppLocalizations l10n) {
     final products = analysis.products;
     if (products.isEmpty) return const SizedBox.shrink();
 
@@ -175,12 +188,13 @@ class AnalysisPanelContent extends ConsumerWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text("Sản phẩm gợi ý",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(l10n.productsTab,
+                style:
+                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             TextButton(
               onPressed: () {
-                ref.read(mainTabIndexProvider.notifier).state = 1;
                 ref.read(suggestionsTabIndexProvider.notifier).state = 1;
+                ref.read(mainTabIndexProvider.notifier).state = 1;
               },
               child: const Text("Nhiều hơn >>"),
             ),
@@ -226,26 +240,16 @@ class AnalysisPanelContent extends ConsumerWidget {
     );
   }
 
+  // 4. Lưới Phân tích Chi tiết
   Widget _buildGridInfoCards(BuildContext context) {
-    final List<Map<String, dynamic>> issueDetails = [
-      {'label': 'Mụn', 'key': 'acne', 'color': const Color(0xFFF44336)},
-      {
-        'label': 'Lỗ chân lông',
-        'key': 'pores',
-        'color': const Color(0xFF64B5F6)
-      },
-      {
-        'label': 'Sắc tố',
-        'key': 'pigmentation',
-        'color': const Color(0xFFFF9800)
-      },
-      {
-        'label': 'Nếp nhăn',
-        'key': 'wrinkles',
-        'color': const Color(0xFF673AB7)
-      },
-      {'label': 'Kết cấu da', 'key': 'texture', 'color': Colors.teal},
-      {'label': 'Mẩn đỏ', 'key': 'redness', 'color': Colors.redAccent},
+    // [CẢI TIẾN] - Loại bỏ 'color' không cần thiết
+    final List<Map<String, String>> issueDetails = [
+      {'label': 'Mụn', 'key': 'acne'},
+      {'label': 'Lỗ chân lông', 'key': 'pores'},
+      {'label': 'Sắc tố', 'key': 'pigmentation'},
+      {'label': 'Nếp nhăn', 'key': 'wrinkles'},
+      {'label': 'Kết cấu da', 'key': 'texture'},
+      {'label': 'Mẩn đỏ', 'key': 'redness'},
     ];
 
     return GridView.builder(
@@ -262,36 +266,14 @@ class AnalysisPanelContent extends ConsumerWidget {
         final detail = issueDetails[i];
         final score = _getScoreValue(detail['key']);
 
-        return buildInfoCard(
-          detail['label'],
-          score,
-          detail['color'],
-        );
+        // [CẢI TIẾN] - Truyền label và score vào thẻ mới
+        return _buildInfoCard(detail['label']!, score);
       },
     );
   }
 
-
-  int _getScoreValue(String key) {
-    switch (key) {
-      case 'acne':
-        return analysis.analysis.acne;
-      case 'pores':
-        return analysis.analysis.pores;
-      case 'pigmentation':
-        return analysis.analysis.pigmentation;
-      case 'wrinkles':
-        return analysis.analysis.wrinkles;
-      case 'texture':
-        return analysis.analysis.texture;
-      case 'redness':
-        return analysis.analysis.redness;
-      default:
-        return 0;
-    }
-  }
-
-  Widget buildInfoCard(String title, int score, Color dotColor) {
+  // [CẢI TIẾN] - Giao diện thẻ điểm mới, không còn ổ khóa, không còn chấm màu
+  Widget _buildInfoCard(String title, int score) {
     return Container(
       padding: const EdgeInsets.all(12.0),
       decoration: BoxDecoration(
@@ -328,7 +310,8 @@ class AnalysisPanelContent extends ConsumerWidget {
       ),
     );
   }
-  // [THÊM MỚI] - Mục "Chat với AI" và "Kết nối chuyên gia"
+
+  // 5. Mục CTA
   Widget _buildCtaSection(BuildContext context, AppLocalizations l10n) {
     return Column(
       children: [
@@ -338,8 +321,8 @@ class AnalysisPanelContent extends ConsumerWidget {
           title: l10n.chatWithAI,
           subtitle: l10n.chatWithAISubtitle,
           onTap: () {
-            // TODO: Mở giao diện chat AI (mô phỏng)
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.featureInProgress)));
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(l10n.featureInProgress)));
           },
         ),
         const SizedBox(height: 12),
@@ -349,15 +332,14 @@ class AnalysisPanelContent extends ConsumerWidget {
           title: l10n.connectExpert,
           subtitle: l10n.connectExpertSubtitle,
           onTap: () {
-            // TODO: Mở giao diện đặt lịch
-            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(l10n.featureInProgress)));
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(l10n.featureInProgress)));
           },
         ),
       ],
     );
   }
 
-  // Widget con cho thẻ CTA
   Widget _buildCtaCard({
     required BuildContext context,
     required IconData icon,
@@ -374,7 +356,9 @@ class AnalysisPanelContent extends ConsumerWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(16.0),
           border: Border.all(color: Colors.grey.shade200, width: 1.2),
-          boxShadow: [BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 8)],
+          boxShadow: [
+            BoxShadow(color: Colors.black.withAlpha(8), blurRadius: 8)
+          ],
         ),
         child: Row(
           children: [
@@ -384,9 +368,13 @@ class AnalysisPanelContent extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text(title,
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 4),
-                  Text(subtitle, style: TextStyle(color: Colors.grey.shade700, fontSize: 13)),
+                  Text(subtitle,
+                      style:
+                          TextStyle(color: Colors.grey.shade700, fontSize: 13)),
                 ],
               ),
             ),
@@ -397,7 +385,7 @@ class AnalysisPanelContent extends ConsumerWidget {
     );
   }
 
-  // [THÊM MỚI] - Hộp lưu ý quan trọng
+  // 6. Mục Lưu ý
   Widget _buildDisclaimerBox(BuildContext context, AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.all(12.0),
@@ -408,15 +396,23 @@ class AnalysisPanelContent extends ConsumerWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(Icons.warning_amber_rounded, color: Colors.orange.shade700, size: 20),
+          Icon(Icons.warning_amber_rounded,
+              color: Colors.orange.shade700, size: 20),
           const SizedBox(width: 10),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(l10n.disclaimerTitle, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.orange.shade900)),
+                Text(l10n.disclaimerTitle,
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.orange.shade900)),
                 const SizedBox(height: 4),
-                Text(l10n.disclaimerBody, style: TextStyle(color: Colors.grey.shade800, fontSize: 13, height: 1.4)),
+                Text(l10n.disclaimerBody,
+                    style: TextStyle(
+                        color: Colors.grey.shade800,
+                        fontSize: 13,
+                        height: 1.4)),
               ],
             ),
           ),
@@ -424,5 +420,4 @@ class AnalysisPanelContent extends ConsumerWidget {
       ),
     );
   }
-
 }

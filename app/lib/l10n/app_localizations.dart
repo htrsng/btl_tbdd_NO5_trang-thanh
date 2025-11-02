@@ -451,6 +451,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sleep gives your skin time to recover and regenerate cells.'**
   String get lifestyleTip3Subtitle;
+
+  /// No description provided for @chatWithAI.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat with SkinAI'**
+  String get chatWithAI;
+
+  /// No description provided for @chatWithAISubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat with our AI to get quick answers about skin issues.'**
+  String get chatWithAISubtitle;
+
+  /// No description provided for @connectExpert.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect with an Expert'**
+  String get connectExpert;
+
+  /// No description provided for @connectExpertSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Book a 1-on-1 consultation with a dermatologist.'**
+  String get connectExpertSubtitle;
+
+  /// No description provided for @disclaimerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Important Disclaimer'**
+  String get disclaimerTitle;
+
+  /// No description provided for @disclaimerBody.
+  ///
+  /// In en, this message translates to:
+  /// **'SkinAI provides suggestions for reference only. Analysis results may not be 100% accurate. Please consult a dermatologist or medical professional for professional medical advice.'**
+  String get disclaimerBody;
+
+  /// No description provided for @detailedAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Detailed Analysis'**
+  String get detailedAnalysis;
 }
 
 class _AppLocalizationsDelegate

@@ -204,4 +204,28 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get lifestyleTip3Subtitle =>
       'Sleep gives your skin time to recover and regenerate cells.';
+
+  @override
+  String get chatWithAI => 'Chat with SkinAI';
+
+  @override
+  String get chatWithAISubtitle =>
+      'Chat with our AI to get quick answers about skin issues.';
+
+  @override
+  String get connectExpert => 'Connect with an Expert';
+
+  @override
+  String get connectExpertSubtitle =>
+      'Book a 1-on-1 consultation with a dermatologist.';
+
+  @override
+  String get disclaimerTitle => 'Important Disclaimer';
+
+  @override
+  String get disclaimerBody =>
+      'SkinAI provides suggestions for reference only. Analysis results may not be 100% accurate. Please consult a dermatologist or medical professional for professional medical advice.';
+
+  @override
+  String get detailedAnalysis => 'Detailed Analysis';
 }
