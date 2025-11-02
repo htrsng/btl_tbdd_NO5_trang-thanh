@@ -85,5 +85,20 @@
   "lifestyleTip2Title": "Chế độ Ăn Cân bằng",
   "lifestyleTip2Subtitle": "Bổ sung rau xanh...",
   "lifestyleTip3Title": "Ngủ Đủ Giấc",
-  "lifestyleTip3Subtitle": "Giấc ngủ giúp da phục hồi..."
+  "lifestyleTip3Subtitle": "Giấc ngủ giúp da phục hồi...",
+  "uploadTitle": "Tải ảnh lên",
+  "surveyTitle": "Khảo sát da",
+  "resultsTitle": "Kết quả của bạn",
+  "welcomeBack": "Chào mừng trở lại!",
+  "lastSkinScore": "Điểm số da gần nhất của bạn là {score} (vào ngày {date})",
+  "startNewAnalysis": "Bắt đầu phân tích mới",
+  "suggestionsReady": "Gợi ý của bạn đã sẵn sàng",
+  "suggestionsTeaser": "Xem các sản phẩm, thói quen và mẹo lối sống được AI thiết kế riêng cho bạn.",
+  "viewSuggestions": "Xem Gợi ý",
+  "trackProgress": "Theo dõi tiến trình",
+  "trackProgressTeaser": "Xem điểm số của bạn đã cải thiện như thế nào theo thời gian.",
+  "viewHistory": "Xem Lịch sử",
+  "customizeExperience": "Tùy chỉnh trải nghiệm",
+  "customizeExperienceTeaser": "Thay đổi ngôn ngữ (Anh/Việt) hoặc chuyển sang Chế độ tối.",
+  "openSettings": "Mở Cài đặt"
 }

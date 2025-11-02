@@ -269,4 +269,54 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get bookAppointmentButton => 'Đặt lịch tư vấn';
+
+  @override
+  String get uploadTitle => 'Tải ảnh lên';
+
+  @override
+  String get surveyTitle => 'Khảo sát da';
+
+  @override
+  String get resultsTitle => 'Kết quả của bạn';
+
+  @override
+  String get welcomeBack => 'Chào mừng trở lại!';
+
+  @override
+  String lastSkinScore(Object date, Object score) {
+    return 'Điểm số da gần nhất của bạn là $score (vào ngày $date)';
+  }
+
+  @override
+  String get startNewAnalysis => 'Bắt đầu phân tích mới';
+
+  @override
+  String get suggestionsReady => 'Gợi ý của bạn đã sẵn sàng';
+
+  @override
+  String get suggestionsTeaser =>
+      'Xem các sản phẩm, thói quen và mẹo lối sống được AI thiết kế riêng cho bạn.';
+
+  @override
+  String get viewSuggestions => 'Xem Gợi ý';
+
+  @override
+  String get trackProgress => 'Theo dõi tiến trình';
+
+  @override
+  String get trackProgressTeaser =>
+      'Xem điểm số của bạn đã cải thiện như thế nào theo thời gian.';
+
+  @override
+  String get viewHistory => 'Xem Lịch sử';
+
+  @override
+  String get customizeExperience => 'Tùy chỉnh trải nghiệm';
+
+  @override
+  String get customizeExperienceTeaser =>
+      'Thay đổi ngôn ngữ (Anh/Việt) hoặc chuyển sang Chế độ tối.';
+
+  @override
+  String get openSettings => 'Mở Cài đặt';
 }

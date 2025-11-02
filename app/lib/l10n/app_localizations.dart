@@ -577,6 +577,96 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Book Consultation'**
   String get bookAppointmentButton;
+
+  /// No description provided for @uploadTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload Photos'**
+  String get uploadTitle;
+
+  /// No description provided for @surveyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Skin Survey'**
+  String get surveyTitle;
+
+  /// No description provided for @resultsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Results'**
+  String get resultsTitle;
+
+  /// No description provided for @welcomeBack.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome back!'**
+  String get welcomeBack;
+
+  /// No description provided for @lastSkinScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Your last skin score was {score} (on {date})'**
+  String lastSkinScore(Object date, Object score);
+
+  /// No description provided for @startNewAnalysis.
+  ///
+  /// In en, this message translates to:
+  /// **'Start New Analysis'**
+  String get startNewAnalysis;
+
+  /// No description provided for @suggestionsReady.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Suggestions Are Ready'**
+  String get suggestionsReady;
+
+  /// No description provided for @suggestionsTeaser.
+  ///
+  /// In en, this message translates to:
+  /// **'See products, habits, and lifestyle tips personally designed for you by our AI.'**
+  String get suggestionsTeaser;
+
+  /// No description provided for @viewSuggestions.
+  ///
+  /// In en, this message translates to:
+  /// **'View Suggestions'**
+  String get viewSuggestions;
+
+  /// No description provided for @trackProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Track Your Progress'**
+  String get trackProgress;
+
+  /// No description provided for @trackProgressTeaser.
+  ///
+  /// In en, this message translates to:
+  /// **'See how your skin score has improved over time.'**
+  String get trackProgressTeaser;
+
+  /// No description provided for @viewHistory.
+  ///
+  /// In en, this message translates to:
+  /// **'View History'**
+  String get viewHistory;
+
+  /// No description provided for @customizeExperience.
+  ///
+  /// In en, this message translates to:
+  /// **'Customize Your Experience'**
+  String get customizeExperience;
+
+  /// No description provided for @customizeExperienceTeaser.
+  ///
+  /// In en, this message translates to:
+  /// **'Change your language (EN/VI) or switch to Dark Mode.'**
+  String get customizeExperienceTeaser;
+
+  /// No description provided for @openSettings.
+  ///
+  /// In en, this message translates to:
+  /// **'Open Settings'**
+  String get openSettings;
 }
 
 class _AppLocalizationsDelegate

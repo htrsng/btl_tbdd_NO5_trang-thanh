@@ -270,4 +270,54 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get bookAppointmentButton => 'Book Consultation';
+
+  @override
+  String get uploadTitle => 'Upload Photos';
+
+  @override
+  String get surveyTitle => 'Skin Survey';
+
+  @override
+  String get resultsTitle => 'Your Results';
+
+  @override
+  String get welcomeBack => 'Welcome back!';
+
+  @override
+  String lastSkinScore(Object date, Object score) {
+    return 'Your last skin score was $score (on $date)';
+  }
+
+  @override
+  String get startNewAnalysis => 'Start New Analysis';
+
+  @override
+  String get suggestionsReady => 'Your Suggestions Are Ready';
+
+  @override
+  String get suggestionsTeaser =>
+      'See products, habits, and lifestyle tips personally designed for you by our AI.';
+
+  @override
+  String get viewSuggestions => 'View Suggestions';
+
+  @override
+  String get trackProgress => 'Track Your Progress';
+
+  @override
+  String get trackProgressTeaser =>
+      'See how your skin score has improved over time.';
+
+  @override
+  String get viewHistory => 'View History';
+
+  @override
+  String get customizeExperience => 'Customize Your Experience';
+
+  @override
+  String get customizeExperienceTeaser =>
+      'Change your language (EN/VI) or switch to Dark Mode.';
+
+  @override
+  String get openSettings => 'Open Settings';
 }

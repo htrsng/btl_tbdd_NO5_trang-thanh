@@ -85,5 +85,20 @@
   "lifestyleTip2Title": "Balanced Diet",
   "lifestyleTip2Subtitle": "Incorporate greens...",
   "lifestyleTip3Title": "Get Enough Sleep",
-  "lifestyleTip3Subtitle": "Sleep gives your skin time..."
+  "lifestyleTip3Subtitle": "Sleep gives your skin time...",
+  "uploadTitle": "Upload Photos",
+  "surveyTitle": "Skin Survey",
+  "resultsTitle": "Your Results",
+  "welcomeBack": "Welcome back!",
+  "lastSkinScore": "Your last skin score was {score} (on {date})",
+  "startNewAnalysis": "Start New Analysis",
+  "suggestionsReady": "Your Suggestions Are Ready",
+  "suggestionsTeaser": "See products, habits, and lifestyle tips personally designed for you by our AI.",
+  "viewSuggestions": "View Suggestions",
+  "trackProgress": "Track Your Progress",
+  "trackProgressTeaser": "See how your skin score has improved over time.",
+  "viewHistory": "View History",
+  "customizeExperience": "Customize Your Experience",
+  "customizeExperienceTeaser": "Change your language (EN/VI) or switch to Dark Mode.",
+  "openSettings": "Open Settings"
 }
