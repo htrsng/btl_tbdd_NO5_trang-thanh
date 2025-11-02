@@ -2,26 +2,23 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'skin_analysis_model.g.dart';
 
+// --- CÁC MODEL CON ---
 @JsonSerializable()
 class SkinIssueDetail {
   @JsonKey(defaultValue: '')
   final String label;
-//giữ code
   @JsonKey(defaultValue: '')
   final String severity;
-
   SkinIssueDetail({required this.label, required this.severity});
-
   factory SkinIssueDetail.fromJson(Map<String, dynamic> json) =>
       _$SkinIssueDetailFromJson(json);
   Map<String, dynamic> toJson() => _$SkinIssueDetailToJson(this);
 }
 
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true) // Thêm explicitToJson
 class AnalysisDetail {
   @JsonKey(name: 'overall_issues', defaultValue: [])
   final List<SkinIssueDetail> overallIssues;
-
   @JsonKey(defaultValue: 0)
   final int acne;
   @JsonKey(defaultValue: 0)
@@ -34,17 +31,14 @@ class AnalysisDetail {
   final int texture;
   @JsonKey(defaultValue: 0)
   final int redness;
-
-  AnalysisDetail({
-    required this.overallIssues,
-    required this.acne,
-    required this.pores,
-    required this.pigmentation,
-    required this.wrinkles,
-    required this.texture,
-    required this.redness,
-  });
-
+  AnalysisDetail(
+      {required this.overallIssues,
+      required this.acne,
+      required this.pores,
+      required this.pigmentation,
+      required this.wrinkles,
+      required this.texture,
+      required this.redness});
   factory AnalysisDetail.fromJson(Map<String, dynamic> json) =>
       _$AnalysisDetailFromJson(json);
   Map<String, dynamic> toJson() => _$AnalysisDetailToJson(this);
@@ -60,35 +54,32 @@ class ProductSuggestion {
   final String reason;
   @JsonKey(defaultValue: '')
   final String image;
-
-  ProductSuggestion({
-    required this.name,
-    required this.brand,
-    required this.reason,
-    required this.image,
-  });
-
+  ProductSuggestion(
+      {required this.name,
+      required this.brand,
+      required this.reason,
+      required this.image});
   factory ProductSuggestion.fromJson(Map<String, dynamic> json) =>
       _$ProductSuggestionFromJson(json);
   Map<String, dynamic> toJson() => _$ProductSuggestionToJson(this);
 }
 
 // --- MODEL CHÍNH ---
-@JsonSerializable(explicitToJson: true)
+@JsonSerializable(explicitToJson: true) // Thêm explicitToJson
 class SkinAnalysis {
   @JsonKey(defaultValue: 0.0)
   final double skinScore;
-
   @JsonKey(defaultValue: '')
   final String skinType;
-
   final AnalysisDetail analysis;
-
   @JsonKey(defaultValue: {})
   final Map<String, List<String>> improvements;
-
   @JsonKey(defaultValue: [])
   final List<ProductSuggestion> products;
+
+  // Thêm trường lifestyleTips
+  @JsonKey(defaultValue: {})
+  final Map<String, List<String>> lifestyleTips;
 
   final DateTime? date;
 
@@ -98,6 +89,7 @@ class SkinAnalysis {
     required this.analysis,
     required this.improvements,
     required this.products,
+    required this.lifestyleTips, // Thêm vào constructor
     this.date,
   });
 
@@ -115,17 +107,18 @@ class SkinAnalysis {
           redness: 0),
       improvements: {},
       products: [],
+      lifestyleTips: {}, // Thêm vào hàm empty
       date: DateTime.now(),
     );
   }
 
-  // [THÊM MỚI] - Phương thức copyWith
   SkinAnalysis copyWith({
     double? skinScore,
     String? skinType,
     AnalysisDetail? analysis,
     Map<String, List<String>>? improvements,
     List<ProductSuggestion>? products,
+    Map<String, List<String>>? lifestyleTips, // Thêm vào copyWith
     DateTime? date,
   }) {
     return SkinAnalysis(
@@ -134,6 +127,7 @@ class SkinAnalysis {
       analysis: analysis ?? this.analysis,
       improvements: improvements ?? this.improvements,
       products: products ?? this.products,
+      lifestyleTips: lifestyleTips ?? this.lifestyleTips, // Thêm vào copyWith
       date: date ?? this.date,
     );
   }

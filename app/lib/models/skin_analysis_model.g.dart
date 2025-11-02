@@ -74,6 +74,11 @@ SkinAnalysis _$SkinAnalysisFromJson(Map<String, dynamic> json) => SkinAnalysis(
                   (e) => ProductSuggestion.fromJson(e as Map<String, dynamic>))
               .toList() ??
           [],
+      lifestyleTips: (json['lifestyleTips'] as Map<String, dynamic>?)?.map(
+            (k, e) => MapEntry(
+                k, (e as List<dynamic>).map((e) => e as String).toList()),
+          ) ??
+          {},
       date:
           json['date'] == null ? null : DateTime.parse(json['date'] as String),
     );
@@ -85,5 +90,6 @@ Map<String, dynamic> _$SkinAnalysisToJson(SkinAnalysis instance) =>
       'analysis': instance.analysis.toJson(),
       'improvements': instance.improvements,
       'products': instance.products.map((e) => e.toJson()).toList(),
+      'lifestyleTips': instance.lifestyleTips,
       'date': instance.date?.toIso8601String(),
     };

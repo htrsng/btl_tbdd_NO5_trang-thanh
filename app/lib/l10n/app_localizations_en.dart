@@ -188,22 +188,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lifestyleTip1Title => 'Stay Hydrated';
 
   @override
-  String get lifestyleTip1Subtitle =>
-      'Hydration is key to healthy and glowing skin.';
+  String get lifestyleTip1Subtitle => 'Hydration is key...';
 
   @override
   String get lifestyleTip2Title => 'Balanced Diet';
 
   @override
-  String get lifestyleTip2Subtitle =>
-      'Incorporate greens and fruits to provide vitamins for your skin.';
+  String get lifestyleTip2Subtitle => 'Incorporate greens...';
 
   @override
   String get lifestyleTip3Title => 'Get Enough Sleep';
 
   @override
-  String get lifestyleTip3Subtitle =>
-      'Sleep gives your skin time to recover and regenerate cells.';
+  String get lifestyleTip3Subtitle => 'Sleep gives your skin time...';
 
   @override
   String get appName => 'SkinAI App';

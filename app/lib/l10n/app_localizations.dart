@@ -425,7 +425,7 @@ abstract class AppLocalizations {
   /// No description provided for @lifestyleTip1Subtitle.
   ///
   /// In en, this message translates to:
-  /// **'Hydration is key to healthy and glowing skin.'**
+  /// **'Hydration is key...'**
   String get lifestyleTip1Subtitle;
 
   /// No description provided for @lifestyleTip2Title.
@@ -437,7 +437,7 @@ abstract class AppLocalizations {
   /// No description provided for @lifestyleTip2Subtitle.
   ///
   /// In en, this message translates to:
-  /// **'Incorporate greens and fruits to provide vitamins for your skin.'**
+  /// **'Incorporate greens...'**
   String get lifestyleTip2Subtitle;
 
   /// No description provided for @lifestyleTip3Title.
@@ -449,7 +449,7 @@ abstract class AppLocalizations {
   /// No description provided for @lifestyleTip3Subtitle.
   ///
   /// In en, this message translates to:
-  /// **'Sleep gives your skin time to recover and regenerate cells.'**
+  /// **'Sleep gives your skin time...'**
   String get lifestyleTip3Subtitle;
 
   /// No description provided for @appName.

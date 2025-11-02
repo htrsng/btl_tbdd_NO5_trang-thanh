@@ -1,9 +1,12 @@
 import 'dart:math' as math;
+// [SỬA LỖI] - Sửa 'package.' thành 'package:'
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
+
 import '../models/skin_analysis_model.dart';
 import 'app_state_provider.dart';
 
+// Lớp AnalysisFlowState (Giữ nguyên)
 class AnalysisFlowState {
   final List<XFile?> images;
   final Map<String, String> surveyAnswers;
@@ -39,9 +42,11 @@ class AnalysisFlowState {
   }
 }
 
+// Class AnalysisFlowNotifier (Giữ nguyên)
 class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
   final Ref _ref;
   AnalysisFlowNotifier(this._ref) : super(const AnalysisFlowState());
+
   Future<void> setImage(int index, XFile image) async {
     final newImages = List<XFile?>.from(state.images);
     newImages[index] = image;
@@ -120,38 +125,53 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
         redness: detailedScores['redness']!,
       ),
       improvements: {
-        "Cải thiện chung": ["Uống đủ nước", "Ngủ sớm"]
+        "Cải thiện chung": ["Uống đủ nước", "Ngủ sớm"],
+        "Vấn đề da": ["Giảm mụn ẩn", "Sử dụng BHA"],
+      },
+      lifestyleTips: {
+        "🧘 1. Giấc ngủ & quản lý căng thẳng": [
+          "Ngủ đủ 7-8 tiếng/đêm.",
+          "Thiền 10 phút mỗi ngày."
+        ],
+        "🥗 2. Dinh dưỡng & bổ sung": [
+          "Ăn nhiều rau xanh.",
+          "Hạn chế đồ ngọt."
+        ],
       },
       products: [
         ProductSuggestion(
             name: "Serum B5",
             brand: "La Roche-Posay",
             reason: "Phục hồi",
-            image: "https://via.placeholder.com/150")
+            image: "assets/images/shopping.webp"),
+        ProductSuggestion(
+            name: "Kem chống nắng Anessa",
+            brand: "Shiseido",
+            reason: "Bảo vệ da",
+            image: "assets/images/kcn.webp"),
+        ProductSuggestion(
+            name: "Sữa rửa mặt Cetaphil",
+            brand: "Galderma",
+            reason: "Làm sạch da",
+            image: "assets/images/srm.webp"),
       ],
       date: DateTime.now(),
     );
   }
 
   String _determineSkinTypeFromSurvey(Map<String, String> answers) {
-    // 1. Khởi tạo điểm số cho các đặc tính
     Map<String, int> scores = {'dầu': 0, 'khô': 0, 'nhạy cảm': 0};
-
-    // 2. Phân tích từng câu trả lời và cộng điểm
     answers.forEach((key, answer) {
-      // Logic cho da dầu
       if (answer.contains('dầu') ||
           answer.contains('nhờn') ||
           answer.contains('To rõ')) {
         scores['dầu'] = (scores['dầu'] ?? 0) + 3;
       }
-      // Logic cho da khô
       if (answer.contains('khô') ||
           answer.contains('căng') ||
           answer.contains('bong tróc')) {
         scores['khô'] = (scores['khô'] ?? 0) + 3;
       }
-      // Logic cho da nhạy cảm
       if (answer.contains('ngứa') ||
           answer.contains('rát') ||
           answer.contains('đỏ') ||
@@ -159,7 +179,6 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
           answer.contains('châm chích')) {
         scores['nhạy cảm'] = (scores['nhạy cảm'] ?? 0) + 4;
       }
-
       if (key == 'q1' || key == 'q2' || key == 'q4') {
         if (answer.contains('vùng chữ T') && answer.contains('má')) {
           scores['dầu'] = (scores['dầu'] ?? 0) + 2;
@@ -167,8 +186,6 @@ class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
         }
       }
     });
-
-    // 3. Tổng hợp kết quả thành một chuỗi mô tả
     List<String> descriptions = [];
     String primaryType;
     if ((scores['dầu'] ?? 0) > (scores['khô'] ?? 0) + 2) {

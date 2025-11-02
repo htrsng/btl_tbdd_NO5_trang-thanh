@@ -79,5 +79,11 @@
   "expertName": "Dr. John Doe",
   "expertSpecialty": "Dermatologist - 10 years experience",
   "expertBio": "Dr. Doe is a leading expert in acne treatment and skin recovery. Book your 1-on-1 consultation today.",
-  "bookAppointmentButton": "Book Consultation"
+  "bookAppointmentButton": "Book Consultation",
+  "lifestyleTip1Title": "Stay Hydrated",
+  "lifestyleTip1Subtitle": "Hydration is key...",
+  "lifestyleTip2Title": "Balanced Diet",
+  "lifestyleTip2Subtitle": "Incorporate greens...",
+  "lifestyleTip3Title": "Get Enough Sleep",
+  "lifestyleTip3Subtitle": "Sleep gives your skin time..."
 }
