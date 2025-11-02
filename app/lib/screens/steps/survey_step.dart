@@ -11,14 +11,12 @@ class SurveyStep extends ConsumerStatefulWidget {
 }
 
 class _SurveyStepState extends ConsumerState<SurveyStep> {
-  // State để theo dõi câu hỏi hiện tại
   int _currentQuestionIndex = 0;
 
   void _nextQuestion() {
     final questions = ref.read(surveyQuestionsProvider);
     final answers = ref.read(analysisFlowProvider).surveyAnswers;
 
-    // Kiểm tra xem câu hỏi hiện tại đã được trả lời chưa
     if (answers[questions[_currentQuestionIndex]['id']]!.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Vui lòng chọn một câu trả lời!')),
@@ -26,13 +24,11 @@ class _SurveyStepState extends ConsumerState<SurveyStep> {
       return;
     }
 
-    // Nếu chưa phải câu hỏi cuối cùng, chuyển sang câu tiếp theo
     if (_currentQuestionIndex < questions.length - 1) {
       setState(() {
         _currentQuestionIndex++;
       });
     } else {
-      // Nếu là câu hỏi cuối cùng, gọi hàm phân tích
       ref.read(analysisFlowProvider.notifier).analyze();
     }
   }

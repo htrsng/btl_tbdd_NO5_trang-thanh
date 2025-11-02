@@ -1,5 +1,5 @@
+//"bản thiết kế" dữ liệu =>  định nghĩa cấu trúc cho các đối tượng mà ứng dụng sẽ sử dụng.
 import 'package:json_annotation/json_annotation.dart';
-
 part 'skin_analysis_model.g.dart';
 
 // --- CÁC MODEL CON ---

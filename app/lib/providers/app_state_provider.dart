@@ -1,3 +1,4 @@
+// quản lý 2 việc: người dùng đang ở bước nào (currentStep) và kết quả phân tích cuối cùng là gì (SkinAnalysis? analysis).
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/skin_analysis_model.dart';
 

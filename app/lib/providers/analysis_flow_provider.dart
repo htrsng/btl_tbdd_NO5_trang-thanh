@@ -1,12 +1,10 @@
+//Nó lưu trữ dữ liệu tạm thời (3 ảnh, 5 câu trả lời khảo sát) và chứa "bộ não AI"
 import 'dart:math' as math;
-// [SỬA LỖI] - Sửa 'package.' thành 'package:'
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../models/skin_analysis_model.dart';
 import 'app_state_provider.dart';
 
-// Lớp AnalysisFlowState (Giữ nguyên)
 class AnalysisFlowState {
   final List<XFile?> images;
   final Map<String, String> surveyAnswers;
@@ -42,7 +40,6 @@ class AnalysisFlowState {
   }
 }
 
-// Class AnalysisFlowNotifier (Giữ nguyên)
 class AnalysisFlowNotifier extends StateNotifier<AnalysisFlowState> {
   final Ref _ref;
   AnalysisFlowNotifier(this._ref) : super(const AnalysisFlowState());
