@@ -138,6 +138,7 @@ app/
 * **Pull Requests (PR):** Fork project -> Tạo branch mới (`git checkout -b feature/AmazingFeature`) -> Commit thay đổi (`git commit -m 'Add some AmazingFeature'`) -> Push lên branch (`git push origin feature/AmazingFeature`) -> Mở một Pull Request.
 
 ### Hướng phát triển trong tương lai:
+
 * Tích hợp backend thật (Firebase) để lưu trữ kết quả.
 * Sử dụng ML Kit (TensorFlow Lite) để thực hiện phân tích hình ảnh thực sự.
 * Thêm thông báo đẩy (Push Notifications) để nhắc nhở chu trình chăm sóc da.

@@ -65,7 +65,7 @@ class ProductSuggestion {
 }
 
 // --- MODEL CHÍNH ---
-@JsonSerializable(explicitToJson: true) // Thêm explicitToJson
+@JsonSerializable(explicitToJson: true) 
 class SkinAnalysis {
   @JsonKey(defaultValue: 0.0)
   final double skinScore;
@@ -89,7 +89,7 @@ class SkinAnalysis {
     required this.analysis,
     required this.improvements,
     required this.products,
-    required this.lifestyleTips, // Thêm vào constructor
+    required this.lifestyleTips, 
     this.date,
   });
 
@@ -107,7 +107,7 @@ class SkinAnalysis {
           redness: 0),
       improvements: {},
       products: [],
-      lifestyleTips: {}, // Thêm vào hàm empty
+      lifestyleTips: {}, 
       date: DateTime.now(),
     );
   }
@@ -118,7 +118,7 @@ class SkinAnalysis {
     AnalysisDetail? analysis,
     Map<String, List<String>>? improvements,
     List<ProductSuggestion>? products,
-    Map<String, List<String>>? lifestyleTips, // Thêm vào copyWith
+    Map<String, List<String>>? lifestyleTips, 
     DateTime? date,
   }) {
     return SkinAnalysis(
@@ -127,7 +127,7 @@ class SkinAnalysis {
       analysis: analysis ?? this.analysis,
       improvements: improvements ?? this.improvements,
       products: products ?? this.products,
-      lifestyleTips: lifestyleTips ?? this.lifestyleTips, // Thêm vào copyWith
+      lifestyleTips: lifestyleTips ?? this.lifestyleTips, 
       date: date ?? this.date,
     );
   }
