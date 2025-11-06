@@ -210,7 +210,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get aboutUsBody =>
-      'Project developed by [Your Name/Team Name].\n\nWe aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.';
+      'We aim to provide a convenient solution for people to better understand their skin and find the most suitable care routine.';
 
   @override
   String get aboutUsLecturer => 'Instructor: Nguyen Xuan Que';
