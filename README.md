@@ -10,7 +10,7 @@
 
 ---
 ### Link demo : 
-![Demo](https://drive.google.com/file/d/1x0nw1EdeeDm5zoM4NGxBdrm7Ji3GKieL/view?usp=sharing)
+![Demo](screenshots\demo.mkv)
 ---
 ## 📸 Giao diện & Tính năng Nổi bật
 
