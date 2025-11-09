@@ -9,7 +9,7 @@
 Ứng dụng cho phép người dùng phân tích tình trạng da của mình thông qua một luồng 4 bước đơn giản, từ đó nhận được các gợi ý cá nhân hóa về chăm sóc da, sản phẩm và lối sống.
 
 ---
-### Link demo : screenshots\demo.mkv
+### Link demo : ![Demo](screenshots\demo.mkv)
 ---
 ## 📸 Giao diện & Tính năng Nổi bật
 
