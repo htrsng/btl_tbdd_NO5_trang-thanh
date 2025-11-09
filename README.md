@@ -10,7 +10,7 @@
 
 ---
 ### Link demo : 
-![Demo](https://drive.google.com/drive/folders/1IaOvt2Cd_QC7lFsCSqJ0oNwdCd1i0Jpj?usp=sharing)
+![Demo](https://drive.google.com/file/d/1x0nw1EdeeDm5zoM4NGxBdrm7Ji3GKieL/view?usp=sharing)
 ---
 ## 📸 Giao diện & Tính năng Nổi bật
 
